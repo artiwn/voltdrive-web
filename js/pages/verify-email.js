@@ -1,0 +1,10 @@
+import{getStoredUser,saveUser}from'../core/auth-storage.js';
+const inputs=[...document.querySelectorAll('[data-code-inputs] input')];
+const form=document.querySelector('#verify-form');
+const message=document.querySelector('#form-message');
+const submit=document.querySelector('#verify-submit');
+const email=document.querySelector('#verify-email-address');
+const user=getStoredUser();if(user?.email)email.textContent=user.email;
+inputs.forEach((input,index)=>{input.addEventListener('input',()=>{input.value=input.value.replace(/\D/g,'').slice(0,1);if(input.value&&inputs[index+1])inputs[index+1].focus()});input.addEventListener('keydown',e=>{if(e.key==='Backspace'&&!input.value&&inputs[index-1])inputs[index-1].focus()})});
+form?.addEventListener('submit',e=>{e.preventDefault();const code=inputs.map(input=>input.value).join('');if(code!=='123456'){message.textContent='Enter the demo verification code 123456.';message.classList.add('is-visible');return}submit.classList.add('is-loading');submit.disabled=true;window.setTimeout(()=>{if(user)saveUser({...user,emailVerified:true});window.location.href='./region.html'},350)});
+document.querySelector('#resend-code')?.addEventListener('click',()=>{message.textContent='A new demo code was sent. Use 123456.';message.classList.add('is-visible')});

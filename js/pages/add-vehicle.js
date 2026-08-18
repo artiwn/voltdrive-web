@@ -1,0 +1,5 @@
+import{getStoredUser,saveUser}from'../core/auth-storage.js';
+const form=document.querySelector('#vehicle-form');const previewName=document.querySelector('#vehicle-preview-name');const previewMeta=document.querySelector('#vehicle-preview-meta');
+function updatePreview(){previewName.textContent=`${form.elements.manufacturer.value||'Vehicle'} ${form.elements.model.value||''}`.trim();previewMeta.textContent=`${form.elements.connector.value} · ${form.elements.batteryCapacity.value||0} kWh`}
+form.addEventListener('input',updatePreview);form.addEventListener('change',updatePreview);updatePreview();
+form.addEventListener('submit',e=>{e.preventDefault();const user=getStoredUser()||{};const vehicle={manufacturer:form.elements.manufacturer.value.trim(),model:form.elements.model.value.trim(),registration:form.elements.registration.value.trim(),batteryCapacity:Number(form.elements.batteryCapacity.value),connector:form.elements.connector.value,chargingLimit:form.elements.chargingLimit.value,plugAndCharge:form.elements.plugAndCharge.checked};saveUser({...user,vehicle});window.location.href='./add-payment.html'});

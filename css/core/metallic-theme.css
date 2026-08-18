@@ -1,0 +1,413 @@
+/* VoltDrive Metallic Theme
+   Visual-only compatibility layer adapted from the EV Driver mobile prototype.
+   It intentionally does not change layout, DOM structure, navigation or JS hooks. */
+
+:root{
+  --color-bg:#090a0b;
+  --color-bg-elevated:#111315;
+  --color-card:#171a1c;
+  --color-surface:#23272a;
+  --color-text:#f4f6f8;
+  --color-text-muted:#9aa3a9;
+  --color-text-soft:#737d83;
+  --color-primary:#d9dde0;
+  --color-primary-hover:#eef1f3;
+  --color-success:#45d48b;
+  --color-error:#ff5f57;
+  --color-border:rgba(255,255,255,.095);
+  --color-border-strong:rgba(255,255,255,.17);
+  --shadow-card:0 22px 54px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.055);
+
+  /* Compatibility aliases already referenced by existing page CSS. */
+  --color-background:var(--color-bg);
+  --color-surface-secondary:#1b1f22;
+  --color-surface-elevated:#202529;
+  --color-surface-raised:#292f33;
+  --color-text-primary:var(--color-text);
+  --color-text-secondary:var(--color-text-muted);
+  --color-warning:#f5b942;
+  --color-info:#72a7ff;
+  --color-accent:#d9dde0;
+  --accent:#d9dde0;
+  --accent-color:#d9dde0;
+  --border-color:var(--color-border);
+  --surface-1:#15181a;
+  --surface-2:#1c2023;
+  --surface-3:#252a2e;
+  --text-primary:var(--color-text);
+  --text-secondary:var(--color-text-muted);
+  --header-height:76px;
+}
+
+html{color-scheme:dark}
+body,
+body.app-page,
+.auth-page{
+  background:
+    radial-gradient(circle at 18% 8%,rgba(110,120,126,.22) 0,rgba(42,47,50,.12) 20%,transparent 39%),
+    radial-gradient(circle at 90% 92%,rgba(74,82,87,.10),transparent 31%),
+    linear-gradient(145deg,#0d0f10 0%,#090a0b 48%,#070809 100%) !important;
+  color:var(--color-text);
+}
+
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:-1;
+  opacity:.055;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.42'/%3E%3C/svg%3E");
+}
+
+*{scrollbar-color:#42494e #111315}
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-track{background:#111315}
+::-webkit-scrollbar-thumb{background:linear-gradient(180deg,#4a5257,#2b3034);border:2px solid #111315;border-radius:999px}
+
+/* Shell */
+.sidebar{
+  background:
+    linear-gradient(180deg,rgba(35,39,42,.96) 0%,rgba(18,21,23,.98) 38%,rgba(10,12,13,.99) 100%) !important;
+  border-right-color:rgba(255,255,255,.10) !important;
+  box-shadow:inset -1px 0 0 rgba(255,255,255,.025),20px 0 60px rgba(0,0,0,.18);
+}
+.app-header{
+  background:rgba(14,16,17,.80) !important;
+  border-bottom-color:rgba(255,255,255,.10) !important;
+  box-shadow:0 12px 32px rgba(0,0,0,.16),inset 0 -1px 0 rgba(255,255,255,.02);
+  backdrop-filter:blur(22px) saturate(115%);
+}
+.sidebar__mark,.brand__mark{
+  background:linear-gradient(145deg,#eef1f3 0%,#aeb6bb 48%,#687177 100%) !important;
+  color:#111416 !important;
+  box-shadow:0 10px 28px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.9) !important;
+}
+.sidebar__mark :is(svg,path),.brand__mark :is(svg,path){color:#171b1d;fill:currentColor}
+.nav-link:hover{
+  background:linear-gradient(135deg,rgba(255,255,255,.075),rgba(255,255,255,.025)) !important;
+}
+.nav-link.is-active{
+  background:linear-gradient(135deg,rgba(220,225,228,.18),rgba(112,123,130,.07)) !important;
+  color:#f5f7f8 !important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.08),inset 0 0 0 1px rgba(255,255,255,.04);
+}
+.nav-link__badge{
+  background:linear-gradient(145deg,#e6eaec,#929ba1) !important;
+  color:#121517 !important;
+}
+.sidebar__avatar{
+  background:linear-gradient(145deg,#3d4448,#1d2124 64%,#111315) !important;
+  border:1px solid rgba(255,255,255,.10);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.08);
+}
+
+/* Controls */
+.button--primary{
+  background:linear-gradient(135deg,#f3f5f6 0%,#c7cdd1 48%,#929ba1 100%) !important;
+  color:#15191b !important;
+  border:1px solid rgba(255,255,255,.38) !important;
+  box-shadow:0 12px 28px rgba(0,0,0,.26),inset 0 1px 0 #fff;
+}
+.button--primary:hover{
+  background:linear-gradient(135deg,#fff 0%,#dce1e4 50%,#a8b0b5 100%) !important;
+}
+.button--secondary,.header-control,.icon-button,.header__menu{
+  background:linear-gradient(145deg,#202427,#131618) !important;
+  border-color:rgba(255,255,255,.115) !important;
+  color:#eef1f3 !important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.055);
+}
+.button--secondary:hover,.header-control:hover,.icon-button:hover{
+  background:linear-gradient(145deg,#292e32,#171a1c) !important;
+  border-color:rgba(255,255,255,.18) !important;
+}
+
+:is(.field input,.field select,textarea,select,
+.demo-field input,.demo-field select,.request-card input,.request-card select,.request-card textarea,
+.route-form input,.route-form select,.field-group input,.field-group select,
+.analytics-modal input,.edit-modal input,.edit-modal select,
+.support-modal .form-field input,.support-modal .form-field textarea,.support-modal .form-field select,
+.topup-settings select,.wallet-panel__header select,#notification-sort,#faq-category,#review-sort,
+.charger-code-card input,.session-controls select,#location-select){
+  background-color:#101315 !important;
+  color:#eef2f4 !important;
+  border-color:rgba(255,255,255,.105) !important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.025);
+}
+:is(.field input,.field select,textarea,select,
+.demo-field input,.demo-field select,.request-card input,.request-card select,.request-card textarea,
+.route-form input,.route-form select,.field-group input,.field-group select):focus{
+  border-color:rgba(207,214,218,.52) !important;
+  box-shadow:0 0 0 4px rgba(199,205,209,.08),inset 0 1px 0 rgba(255,255,255,.04) !important;
+}
+:is(input,textarea)::placeholder{color:#727b81 !important}
+
+/* Core metallic surfaces */
+.panel,
+.auth-card,.showcase-stat,
+.access-summary article,.access-card,.rfid-item,.method-list article,
+.security-hero,.security-summary article,.security-panel,.session-item,
+.summary-card,.activity-row,.drawer-panel,.detail-hero,
+.analytics-hero,.metric-card,.analytics-card,.sustainability-card,
+.arrival-hero,.arrival-panel,.check-row,.assignment-card,.access-method,
+.charging-main-card,.charging-summary,.charging-complete,.charger-code-card,.scan-card,.connector-card,.summary-note,
+.demo-card,.scenario-card,
+.incident-card,.assistance-card,.request-card,.cases-section,.case-item,
+.fleet-hero,.fleet-summary article,.fleet-panel,.fleet-vehicle,
+.location-hero,.summary-card,.charger-row,.facility-item,.booking-panel__sticky,.estimate-card,
+.station-panel,.station-card,
+.details-hero,.details-card,.context-item,
+.notification-summary article,.filter-panel,.notification-feed,.preference-note,.notification-item,
+.parking-hero,.parking-timer-card,.parking-panel,.parking-complete,.parking-summary-grid>div,
+.region-summary,
+.reservation-card,.reservation-summary__sticky,.reservation-success,.choice-card,.vehicle-summary,
+.reservation-card-item,.reservation-detail,.detail-tile,.edit-modal,
+.roaming-hero,.roaming-summary article,.roaming-panel,.network-card,
+.route-hero,.card,.route-summary,.route-summary div,.mini-item,
+.settings-nav,.settings-section,.profile-summary,.sub-card,.device-item,.modal__panel,
+.smart-hero,.smart-summary article,.smart-panel,.check-row,.choice-cards button,.rule-item,
+.feedback-hero,.review-card,.case-card,
+.savings-card,.plan-card,.package-card,.usage-card,.benefit-card,.plan-modal__panel,.purchase-summary,
+.support-hero,.support-card,.ticket-item,.support-modal__panel,.ticket-detail__summary div,
+.vehicle-hero,.battery-panel,.vehicle-facts,.detail-card,.connector-row,.config-row,.payment-source-card,.plug-charge-card,.history-row,
+.summary-card,.garage-card,.vehicle-modal__panel,
+.waiting-hero,.waiting-panel,.queue-metrics>div,.preference-row,.ready-details>div,.charger-ready-panel,
+.balance-card,.wallet-panel,.payment-card,.subscription-card,.wallet-modal__panel,.payment-source-option,.recovery-summary div{
+  background:linear-gradient(145deg,rgba(31,35,38,.97) 0%,rgba(18,21,23,.98) 60%,rgba(25,29,31,.97) 100%) !important;
+  border-color:rgba(255,255,255,.105) !important;
+  box-shadow:0 16px 38px rgba(0,0,0,.18),inset 0 1px 0 rgba(255,255,255,.052);
+}
+
+/* Premium / hero surfaces: stronger brushed-metal light. */
+.vehicle-card,.payment-showcase,.vehicle-showcase,.balance-card--primary,
+.location-hero,.charging-main-card,.parking-hero,.waiting-hero,.route-hero,
+.analytics-hero,.fleet-hero,.roaming-hero,.smart-hero,.security-hero,.support-hero,.details-hero{
+  background:
+    radial-gradient(circle at 82% 8%,rgba(255,255,255,.15),transparent 29%),
+    linear-gradient(145deg,#33393d 0%,#1a1e20 46%,#111315 72%,#252a2d 100%) !important;
+  border:1px solid rgba(255,255,255,.14) !important;
+  box-shadow:0 22px 48px rgba(0,0,0,.25),inset 0 1px 0 rgba(255,255,255,.09) !important;
+}
+.vehicle-card::after{border-color:rgba(255,255,255,.085) !important}
+
+/* Dashboard / compact tiles */
+.quick-action,.info-tile,.list-icon,
+.access-card__icon,.rfid-item__icon,.panel-icon,.session-item__icon,
+.assignment-icon,.access-method>span,.scenario-card__icon,
+.summary-icon,.profile-summary,.channel-options label,.security-icon,.device-item>span,
+.garage-card__icon,.payment-card__brand,.subscription-card__logo,
+.support-stat-icon,.quick-help-grid button,.emergency-card__icon{
+  background:linear-gradient(145deg,#292e31,#171a1c) !important;
+  border-color:rgba(255,255,255,.08) !important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.055);
+}
+.quick-action{
+  border:1px solid rgba(255,255,255,.095) !important;
+  box-shadow:0 12px 26px rgba(0,0,0,.14),inset 0 1px 0 rgba(255,255,255,.04);
+}
+.quick-action:hover,.station-card:hover,.garage-card:hover,.ticket-item:hover{
+  background:linear-gradient(145deg,#30363a,#1b1f22) !important;
+  border-color:rgba(255,255,255,.18) !important;
+}
+.quick-action__icon{
+  background:linear-gradient(145deg,#363c40,#202427) !important;
+  color:#e8edef !important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.07);
+}
+
+/* Selected states stay metallic; semantic states stay semantic. */
+:is(.choice-card,.connector-card,.access-method,.scenario-card,.choice-cards button,.garage-card,.station-card,.payment-source-option).is-selected,
+:is(.choice-card,.connector-card,.access-method,.scenario-card,.choice-cards button,.garage-card,.station-card,.payment-source-option).is-active{
+  border-color:rgba(220,226,229,.46) !important;
+  background:linear-gradient(145deg,#343a3e,#1b1f22) !important;
+  box-shadow:0 0 0 1px rgba(255,255,255,.07) inset,0 12px 30px rgba(0,0,0,.20) !important;
+}
+.settings-nav button:hover,.settings-nav button.is-active,
+.period-switch button.is-active,.billing-toggle button.is-active,.profile-switch button.is-active,
+.activity-tab.is-active{
+  background:linear-gradient(145deg,rgba(221,226,229,.18),rgba(115,126,133,.08)) !important;
+  color:#f4f7f8 !important;
+}
+.settings-nav button.is-active span{
+  background:linear-gradient(145deg,#dce1e4,#8f989e) !important;
+  color:#171b1d !important;
+}
+
+/* Authentication */
+.auth-page{
+  background:
+    radial-gradient(circle at 10% 12%,rgba(135,145,151,.18),transparent 34%),
+    radial-gradient(circle at 90% 85%,rgba(70,78,83,.09),transparent 30%),
+    #090a0b !important;
+}
+.auth-showcase{
+  background:
+    radial-gradient(circle at 35% 38%,rgba(255,255,255,.07),transparent 30%),
+    linear-gradient(150deg,rgba(48,54,58,.35),rgba(10,12,13,.08)) !important;
+}
+.auth-showcase::before{
+  background:radial-gradient(circle,rgba(157,168,175,.16),rgba(80,90,96,0) 67%) !important;
+}
+.auth-card{backdrop-filter:blur(24px) saturate(110%)}
+
+/* Map */
+.search-field,.activity-search,.reservation-search,.garage-search,.support-search{
+  background:linear-gradient(145deg,#191d1f,#101214) !important;
+  border-color:rgba(255,255,255,.10) !important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.035);
+}
+.map-canvas,.route-map__canvas{
+  background:
+    linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px),
+    radial-gradient(circle at 50% 42%,#23282b,#121517 62%,#0d0f10) !important;
+  background-size:34px 34px,34px 34px,auto !important;
+}
+
+/* Wallet/payment: premium surface without turning financial states into danger red. */
+.balance-card--primary,.payment-card-preview{
+  color:#f5f7f8 !important;
+}
+.payment-card-preview{
+  background:
+    radial-gradient(circle at 80% 15%,rgba(255,255,255,.22),transparent 28%),
+    linear-gradient(145deg,#626b70,#1a1e20 70%) !important;
+  border:1px solid rgba(255,255,255,.16) !important;
+  box-shadow:0 24px 42px rgba(0,0,0,.26),inset 0 1px 0 rgba(255,255,255,.12);
+}
+.button--light{
+  background:linear-gradient(135deg,#f4f6f7,#a7b0b5) !important;
+  color:#14181a !important;
+}
+
+/* Modals/drawers */
+:is(.access-modal__panel,.analytics-modal section,.charging-demo-modal__panel,.emergency-modal__card,
+.edit-modal,.modal__panel,.plan-modal__panel,.support-modal__panel,.vehicle-modal__panel,.wallet-modal__panel,.charger-ready-panel){
+  background:linear-gradient(145deg,#252a2d,#121416 64%,#1b1f21) !important;
+  border-color:rgba(255,255,255,.14) !important;
+  box-shadow:0 28px 80px rgba(0,0,0,.48),inset 0 1px 0 rgba(255,255,255,.07) !important;
+}
+:is(.access-modal__backdrop,.modal-backdrop,.charging-demo-modal__backdrop,.modal__backdrop,
+.plan-modal__backdrop,.support-modal__backdrop,.vehicle-modal__backdrop,.wallet-modal__backdrop){
+  background:rgba(3,4,5,.74) !important;
+  backdrop-filter:blur(10px) !important;
+}
+.drawer-panel{box-shadow:-24px 0 70px rgba(0,0,0,.42),inset 1px 0 0 rgba(255,255,255,.04) !important}
+
+/* Status colours: preserve meaning and make glow restrained. */
+.status-badge--success,.status-pill--success,.status-confirmed,.status-active,
+.connector-status.available,.status-pill.is-available{
+  background:rgba(69,212,139,.12) !important;
+  color:#65df9d !important;
+}
+.status-badge--warning,.status-pill--warning{background:rgba(245,185,66,.12) !important;color:#f5c35d !important}
+.status-badge--info,.status-pill--blue{background:rgba(114,167,255,.12) !important;color:#83b2ff !important}
+.status-badge--error,.status-cancelled,.status-no-show{background:rgba(255,95,87,.12) !important;color:#ff837c !important}
+
+/* Text hierarchy */
+:is(.dashboard-hero,.settings-hero,.wallet-heading,.vehicles-heading,.activity-heading,
+.access-hero,.security-hero,.analytics-hero,.arrival-hero,.charging-intro,.demo-hero,
+.emergency-hero,.fleet-hero,.roaming-hero,.smart-hero,.feedback-hero,.plans-hero,
+.support-hero,.waiting-hero) h1{
+  color:#f5f7f8;
+  text-shadow:0 1px 0 rgba(255,255,255,.035);
+}
+.eyebrow{color:#8e989e !important}
+
+/* Focus follows metallic accent, while errors remain red. */
+:focus-visible{outline:3px solid rgba(207,214,218,.48);outline-offset:2px}
+.field.is-invalid input{border-color:var(--color-error) !important;box-shadow:0 0 0 4px rgba(255,95,87,.10) !important}
+
+/* Keep primary-button icons/text readable after global inherited colors. */
+.button--primary :is(span,strong,svg,path){color:#15191b !important;fill:currentColor;stroke:currentColor}
+
+@media(max-width:1040px){
+  .sidebar{box-shadow:30px 0 80px rgba(0,0,0,.52),inset -1px 0 0 rgba(255,255,255,.04)}
+}
+
+/* --------------------------------------------------------------------------
+   Structural compatibility fixes
+   Keep the original DOM and JS untouched while preserving viewport geometry.
+   -------------------------------------------------------------------------- */
+
+/* The driver sidebar contains more navigation items than some viewport heights.
+   Scroll only the navigation rail; keep the account footer anchored in view. */
+.sidebar{
+  overflow:hidden;
+  min-height:0;
+}
+.sidebar__nav{
+  flex:1 1 auto;
+  min-height:0;
+  overflow-y:auto;
+  overflow-x:hidden;
+  align-content:start;
+  padding-right:4px;
+  overscroll-behavior:contain;
+  scrollbar-width:thin;
+  scrollbar-color:#42494e transparent;
+}
+.sidebar__nav::-webkit-scrollbar{width:6px}
+.sidebar__nav::-webkit-scrollbar-track{background:transparent}
+.sidebar__nav::-webkit-scrollbar-thumb{
+  background:linear-gradient(180deg,#4a5257,#2b3034);
+  border:0;
+  border-radius:999px;
+}
+.sidebar__footer{
+  flex:0 0 auto;
+  margin-top:12px;
+  background:linear-gradient(180deg,rgba(13,15,16,.72),rgba(9,10,11,.94));
+}
+
+/* account-security.html uses the shared modal markup but does not load
+   settings.css where the original generic modal geometry lives. Define the
+   missing shared geometry here so opening Delete account never enters normal
+   document flow or disturbs the app shell/sidebar. */
+.modal{
+  position:fixed;
+  inset:0;
+  z-index:900;
+  display:none;
+  place-items:center;
+  padding:20px;
+}
+.modal.is-open{display:grid}
+.modal__backdrop{
+  position:absolute;
+  inset:0;
+}
+.modal__panel{
+  position:relative;
+  width:min(100%,520px);
+  max-height:calc(100dvh - 40px);
+  overflow:auto;
+  padding:26px;
+  border-radius:22px;
+}
+.modal__close{
+  position:absolute;
+  top:12px;
+  right:14px;
+  width:36px;
+  height:36px;
+  display:grid;
+  place-items:center;
+  border:1px solid rgba(255,255,255,.10);
+  border-radius:10px;
+  background:linear-gradient(145deg,#252a2d,#15181a);
+  color:var(--color-text-muted);
+  font-size:22px;
+  line-height:1;
+  cursor:pointer;
+}
+.modal__close:hover{
+  color:var(--color-text);
+  border-color:rgba(255,255,255,.18);
+  background:linear-gradient(145deg,#2d3336,#1a1e20);
+}
+
+@media(max-width:1040px){
+  .sidebar{height:100dvh}
+}
