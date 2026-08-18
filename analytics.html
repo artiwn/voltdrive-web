@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b0b0d"><meta name="mobile-web-app-capable" content="yes">
+<title>Charging Analytics — VoltDrive</title>
+<link rel="stylesheet" href="./css/core/reset.css"><link rel="stylesheet" href="./css/core/variables.css"><link rel="stylesheet" href="./css/core/typography.css"><link rel="stylesheet" href="./css/components/buttons.css"><link rel="stylesheet" href="./css/components/forms.css"><link rel="stylesheet" href="./css/layout/app-layout.css"><link rel="stylesheet" href="./css/layout/sidebar.css"><link rel="stylesheet" href="./css/layout/header.css"><link rel="stylesheet" href="./css/pages/analytics.css">
+<link rel="stylesheet" href="./css/core/metallic-theme.css"></head>
+<body class="app-page">
+<div class="app-shell">
+<aside class="sidebar" id="sidebar">
+<a class="sidebar__brand" href="./dashboard.html"><span class="sidebar__mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 4.5 13h6L9 22l10.5-13h-6L13 2Z"/></svg></span><span>VoltDrive</span></a>
+<div class="sidebar__caption">Driver portal</div>
+<nav class="sidebar__nav" aria-label="Primary navigation">
+<a class="nav-link" href="./dashboard.html"><span class="nav-link__icon">⌂</span><span>Dashboard</span></a>
+<a class="nav-link" href="./map.html"><span class="nav-link__icon">⌖</span><span>Map & Stations</span></a><a class="nav-link" href="./route-planner.html"><span class="nav-link__icon">↝</span><span>Route planner</span></a>
+<a class="nav-link" href="./charging.html"><span class="nav-link__icon">ϟ</span><span>Charge</span></a><a class="nav-link" href="./smart-charging.html"><span class="nav-link__icon">◴</span><span>Smart charging</span></a>
+<a class="nav-link" href="./reservations.html"><span class="nav-link__icon">▣</span><span>Reservations</span><span class="nav-link__badge">1</span></a>
+<a class="nav-link" href="./activity.html"><span class="nav-link__icon">↻</span><span>Activity</span></a>
+<a class="nav-link is-active" href="./analytics.html"><span class="nav-link__icon">⌁</span><span>Analytics</span></a>
+<a class="nav-link" href="./vehicles.html"><span class="nav-link__icon">◇</span><span>Vehicles</span></a>
+<a class="nav-link" href="./wallet.html"><span class="nav-link__icon">▤</span><span>Wallet & Payments</span></a>
+<a class="nav-link" href="./subscriptions.html"><span class="nav-link__icon">✦</span><span>Plans & Packages</span></a>
+<a class="nav-link" href="./access-methods.html"><span class="nav-link__icon">⌁</span><span>Access methods</span></a>
+<a class="nav-link" href="./notifications.html"><span class="nav-link__icon">◉</span><span>Notifications</span><span class="nav-link__badge" id="sidebar-notification-count">3</span></a>
+<a class="nav-link" href="./support.html"><span class="nav-link__icon">?</span><span>Support</span></a>
+<a class="nav-link" href="./emergency-assistance.html"><span class="nav-link__icon">!</span><span>Emergency assistance</span></a>
+<a class="nav-link" href="./account-security.html"><span class="nav-link__icon">⌾</span><span>Security & Privacy</span></a>
+<a class="nav-link" href="./settings.html"><span class="nav-link__icon">⚙</span><span>Settings</span></a><a class="nav-link" href="./demo-controls.html"><span class="nav-link__icon">◈</span><span>Demo controls</span></a>
+</nav>
+<div class="sidebar__footer"><div class="sidebar__user"><span class="sidebar__avatar" id="avatar">VD</span><span><strong id="sidebar-name">VoltDrive Driver</strong><span id="sidebar-email">driver@voltdrive.am</span></span></div><button class="nav-link" id="logout-button" type="button" style="width:100%;border:0;background:transparent;cursor:pointer"><span class="nav-link__icon">↪</span><span>Sign out</span></button></div>
+</aside>
+<div class="mobile-overlay" id="mobile-overlay"></div>
+<div class="app-main">
+<header class="app-header"><div class="header__left"><button class="header__menu" id="menu-toggle" type="button" aria-label="Open menu">☰</button><div class="header__title"><strong>Charging analytics</strong><span>Energy, spending and charging habits</span></div></div><div class="header__right"><label class="header-control vehicle-select" aria-label="Active vehicle"><span class="vehicle-select__icon">◇</span><select id="vehicle-selector" aria-label="Active vehicle"></select></label><div class="header-control wallet-chip"><span>Wallet</span><strong id="header-wallet-balance">14,500 AMD</strong></div><a class="header-control header-icon" href="./notifications.html" aria-label="Notifications">◉<span class="header-icon__dot" id="header-notification-dot"></span></a></div></header>
+<main class="page-content analytics-page">
+<section class="analytics-hero"><div><span class="eyebrow">Driver insights</span><h1>Understand every charging kilometre</h1><p>Review energy use, charging costs, station preferences and estimated sustainability impact.</p></div><div class="period-switch" role="group" aria-label="Analytics period"><button class="is-active" data-period="month" type="button">Month</button><button data-period="quarter" type="button">Quarter</button><button data-period="year" type="button">Year</button></div></section>
+<section class="metric-grid" aria-label="Charging metrics">
+<article class="metric-card"><span>Energy consumed</span><strong id="metric-energy">0 kWh</strong><small id="energy-change">Current period</small></article>
+<article class="metric-card"><span>Total charging cost</span><strong id="metric-cost">0 AMD</strong><small id="cost-change">Current period</small></article>
+<article class="metric-card"><span>Average price</span><strong id="metric-average">0 AMD/kWh</strong><small>Across completed sessions</small></article>
+<article class="metric-card"><span>Successful sessions</span><strong id="metric-sessions">0</strong><small id="success-rate">0% completion rate</small></article>
+</section>
+<section class="analytics-grid analytics-grid--wide">
+<article class="analytics-card chart-card"><div class="card-heading"><div><span class="eyebrow">Energy trend</span><h2>Charging by week</h2></div><button id="export-analytics" type="button">Export data</button></div><div class="bar-chart" id="energy-chart" aria-label="Energy use chart"></div><div class="chart-legend"><span><i></i> Energy delivered</span><strong id="chart-total">0 kWh total</strong></div></article>
+<article class="analytics-card"><div class="card-heading"><div><span class="eyebrow">Cost breakdown</span><h2>Where the money went</h2></div></div><div class="cost-ring-wrap"><div class="cost-ring" id="cost-ring"><span><strong id="ring-total">0</strong><small>AMD</small></span></div><div class="breakdown-list" id="breakdown-list"></div></div></article>
+</section>
+<section class="analytics-grid">
+<article class="analytics-card"><div class="card-heading"><div><span class="eyebrow">Charging habits</span><h2>Usage profile</h2></div></div><div class="habit-grid"><div><span>Average session</span><strong id="habit-duration">0 min</strong></div><div><span>Energy per session</span><strong id="habit-energy">0 kWh</strong></div><div><span>Most used connector</span><strong id="habit-connector">—</strong></div><div><span>Preferred time</span><strong id="habit-time">—</strong></div></div></article>
+<article class="analytics-card"><div class="card-heading"><div><span class="eyebrow">Top locations</span><h2>Favorite charging stations</h2></div><a href="./map.html">Find stations →</a></div><div class="station-ranking" id="station-ranking"></div></article>
+</section>
+<section class="analytics-grid">
+<article class="analytics-card sustainability-card"><div class="sustainability-icon">♻</div><div><span class="eyebrow">Estimated impact</span><h2 id="co2-saved">0 kg CO₂ saved</h2><p id="impact-copy">Based on completed demo charging sessions.</p><div class="impact-row"><span><strong id="trees-equivalent">0</strong> tree-month equivalents</span><span><strong id="fuel-avoided">0 L</strong> fuel avoided</span></div></div></article>
+<article class="analytics-card"><div class="card-heading"><div><span class="eyebrow">Monthly target</span><h2>Charging budget</h2></div><button id="edit-budget" type="button">Edit</button></div><div class="budget-summary"><div class="budget-values"><strong id="budget-used">0 AMD</strong><span>of <b id="budget-limit">20,000 AMD</b></span></div><div class="budget-track"><span id="budget-progress"></span></div><p id="budget-message">You are within your monthly charging budget.</p></div></article>
+</section>
+</main>
+</div></div>
+<div class="analytics-modal" id="budget-modal" aria-hidden="true"><button class="modal-backdrop" data-close-budget type="button" aria-label="Close"></button><section role="dialog" aria-modal="true" aria-labelledby="budget-title"><header><div><span class="eyebrow">Spending target</span><h2 id="budget-title">Monthly charging budget</h2></div><button data-close-budget type="button">×</button></header><label>Budget amount<input id="budget-input" type="number" min="1000" step="500" value="20000"></label><footer><button class="button button--secondary" data-close-budget type="button">Cancel</button><button class="button button--primary" id="save-budget" type="button">Save budget</button></footer></section></div>
+<div class="analytics-toast" id="analytics-toast" role="status"></div>
+<script type="module" src="./js/pages/analytics.js"></script><script type="module" src="./js/components/vehicle-selector.js"></script>
+</body></html>

@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b0b0d"><meta name="mobile-web-app-capable" content="yes">
+<title>Demo Controls — VoltDrive</title>
+<link rel="stylesheet" href="./css/core/reset.css"><link rel="stylesheet" href="./css/core/variables.css"><link rel="stylesheet" href="./css/core/typography.css"><link rel="stylesheet" href="./css/components/buttons.css"><link rel="stylesheet" href="./css/layout/app-layout.css"><link rel="stylesheet" href="./css/layout/sidebar.css"><link rel="stylesheet" href="./css/layout/header.css"><link rel="stylesheet" href="./css/pages/demo-controls.css">
+<link rel="stylesheet" href="./css/core/metallic-theme.css"></head>
+<body class="app-page">
+<div class="app-shell">
+<aside class="sidebar" id="sidebar">
+<a class="sidebar__brand" href="./dashboard.html"><span class="sidebar__mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 4.5 13h6L9 22l10.5-13h-6L13 2Z"/></svg></span><span>VoltDrive</span></a>
+<div class="sidebar__caption">Driver portal</div>
+<nav class="sidebar__nav" aria-label="Primary navigation">
+<a class="nav-link" href="./dashboard.html"><span class="nav-link__icon">⌂</span><span>Dashboard</span></a>
+<a class="nav-link" href="./map.html"><span class="nav-link__icon">⌖</span><span>Map & Stations</span></a><a class="nav-link" href="./route-planner.html"><span class="nav-link__icon">↝</span><span>Route planner</span></a>
+<a class="nav-link" href="./charging.html"><span class="nav-link__icon">ϟ</span><span>Charge</span></a><a class="nav-link" href="./smart-charging.html"><span class="nav-link__icon">◴</span><span>Smart charging</span></a>
+<a class="nav-link" href="./reservations.html"><span class="nav-link__icon">▣</span><span>Reservations</span><span class="nav-link__badge" id="sidebar-reservation-count">0</span></a>
+<a class="nav-link" href="./activity.html"><span class="nav-link__icon">↻</span><span>Activity</span></a><a class="nav-link" href="./analytics.html"><span class="nav-link__icon">⌁</span><span>Analytics</span></a>
+<a class="nav-link" href="./vehicles.html"><span class="nav-link__icon">◇</span><span>Vehicles</span></a>
+<a class="nav-link" href="./wallet.html"><span class="nav-link__icon">▤</span><span>Wallet & Payments</span></a>
+<a class="nav-link" href="./subscriptions.html"><span class="nav-link__icon">✦</span><span>Plans & Packages</span></a>
+<a class="nav-link" href="./access-methods.html"><span class="nav-link__icon">⌁</span><span>Access methods</span></a>
+<a class="nav-link" href="./notifications.html"><span class="nav-link__icon">◉</span><span>Notifications</span><span class="nav-link__badge" id="sidebar-notification-count">0</span></a>
+<a class="nav-link" href="./support.html"><span class="nav-link__icon">?</span><span>Support</span></a>
+<a class="nav-link" href="./emergency-assistance.html"><span class="nav-link__icon">!</span><span>Emergency assistance</span></a>
+<a class="nav-link" href="./account-security.html"><span class="nav-link__icon">⌾</span><span>Security & Privacy</span></a>
+<a class="nav-link" href="./settings.html"><span class="nav-link__icon">⚙</span><span>Settings</span></a>
+<a class="nav-link is-active" href="./demo-controls.html"><span class="nav-link__icon">◈</span><span>Demo controls</span></a>
+</nav>
+<div class="sidebar__footer"><div class="sidebar__user"><span class="sidebar__avatar" id="avatar">VD</span><span><strong id="sidebar-name">VoltDrive Driver</strong><span id="sidebar-email">driver@voltdrive.am</span></span></div><button class="nav-link" id="logout-button" type="button" style="width:100%;border:0;background:transparent;cursor:pointer"><span class="nav-link__icon">↪</span><span>Sign out</span></button></div>
+</aside>
+<div class="mobile-overlay" id="mobile-overlay"></div>
+<div class="app-main">
+<header class="app-header"><div class="header__left"><button class="header__menu" id="menu-toggle" type="button" aria-label="Open menu">☰</button><div class="header__title"><strong>Demo controls</strong><span>Prototype state simulator</span></div></div><div class="header__right"><label class="header-control vehicle-select" aria-label="Active vehicle"><span class="vehicle-select__icon" aria-hidden="true">◇</span><select id="vehicle-selector" aria-label="Active vehicle"></select></label><div class="header-control wallet-chip"><span>Wallet</span><strong id="header-wallet-balance">14,500 AMD</strong></div><a class="header-control header-icon" href="./notifications.html" aria-label="Notifications">◉<span class="header-icon__dot" id="header-notification-dot"></span></a></div></header>
+<main class="page-content">
+<section class="demo-hero"><div><span class="eyebrow">Prototype tools</span><h1>Control every demo state.</h1><p>Switch the visual prototype between common driver scenarios without waiting for timers or changing browser storage manually.</p></div><a class="button button--secondary" href="./dashboard.html">Open Dashboard</a></section>
+<div class="demo-warning"><span class="scenario-card__icon">!</span><div><strong>Demo-only panel</strong><span>These controls change local prototype data only. They do not communicate with chargers, payment providers or any external API.</span></div></div>
+<div class="demo-grid">
+<div class="demo-stack">
+<section class="demo-card"><header class="demo-card__header"><div><h2>Manual state controls</h2><p>Apply individual values to the current prototype.</p></div><span class="state-pill">Local only</span></header><div class="demo-card__body"><div class="demo-form-grid">
+<label class="demo-field"><span>Vehicle battery</span><select id="demo-battery"><option value="20">20% · Low</option><option value="42">42% · Ready to charge</option><option value="68" selected>68% · Normal</option><option value="80">80% · Target reached</option><option value="100">100% · Full</option></select></label>
+<label class="demo-field"><span>Wallet balance</span><select id="demo-wallet"><option value="0">0 AMD · Empty</option><option value="2500">2,500 AMD · Low</option><option value="14500" selected>14,500 AMD · Normal</option><option value="50000">50,000 AMD · Funded</option></select></label>
+<label class="demo-field"><span>Reservation</span><select id="demo-reservation"><option value="none">No reservation</option><option value="confirmed" selected>Confirmed</option><option value="active">Active / checked in</option><option value="no-show">No-show</option><option value="cancelled">Cancelled</option></select></label>
+<label class="demo-field"><span>Charging session</span><select id="demo-charging"><option value="none">No session</option><option value="active">Active charging</option><option value="interrupted">Interrupted</option><option value="completed" selected>Completed</option><option value="pending">Completed · payment pending</option></select></label>
+<label class="demo-field"><span>Parking</span><select id="demo-parking"><option value="none">No parking session</option><option value="grace" selected>Grace period</option><option value="idle">Idle fee active</option><option value="completed">Parking completed</option></select></label>
+<label class="demo-field"><span>Charger condition</span><select id="demo-charger"><option value="available" selected>Available</option><option value="busy">Busy</option><option value="offline">Offline</option><option value="faulty">Faulty</option><option value="maintenance">Maintenance</option></select></label>
+</div><div class="demo-actions"><button class="button button--primary" id="apply-demo-state" type="button">Apply state</button><button class="button button--secondary" id="apply-and-dashboard" type="button">Apply and open Dashboard</button></div></div></section>
+<section class="demo-card"><header class="demo-card__header"><div><h2>Ready-made scenarios</h2><p>Set several related states with one click.</p></div></header><div class="demo-card__body"><div class="scenario-grid">
+<button class="scenario-card" data-scenario="fresh"><span class="scenario-card__icon">◇</span><strong>Fresh driver</strong><span>No reservation, no session and a normal wallet balance.</span></button>
+<button class="scenario-card" data-scenario="arrival"><span class="scenario-card__icon">➤</span><strong>Arriving now</strong><span>Confirmed reservation with assigned charger and parking bay.</span></button>
+<button class="scenario-card" data-scenario="charging"><span class="scenario-card__icon">ϟ</span><strong>Active charging</strong><span>42% battery, active 118 kW session and preauthorized payment.</span></button>
+<button class="scenario-card" data-scenario="parking"><span class="scenario-card__icon">◷</span><strong>Idle fee active</strong><span>Charging completed and vehicle remains in the charging bay.</span></button>
+<button class="scenario-card" data-scenario="payment-failed"><span class="scenario-card__icon">!</span><strong>Payment problem</strong><span>Completed session with a failed payment and low wallet balance.</span></button>
+<button class="scenario-card" data-scenario="charger-fault"><span class="scenario-card__icon">×</span><strong>Charger fault</strong><span>Offline charger, interrupted session and critical notification.</span></button>
+</div></div></section>
+</div>
+<aside class="demo-stack">
+<section class="demo-card"><header class="demo-card__header"><div><h2>Current prototype state</h2><p>Values currently stored in this browser.</p></div><button class="button button--secondary" id="refresh-state" type="button">Refresh</button></header><div class="demo-card__body"><div class="state-list" id="current-state-list"></div></div></section>
+<section class="demo-card"><header class="demo-card__header"><div><h2>Open a flow</h2><p>Jump directly to the screen you want to present.</p></div></header><div class="demo-card__body"><div class="demo-links"><a class="demo-link" href="./arrival.html"><span>Arrival</span><strong>→</strong></a><a class="demo-link" href="./charging.html"><span>Charging</span><strong>→</strong></a><a class="demo-link" href="./parking.html"><span>Parking</span><strong>→</strong></a><a class="demo-link" href="./activity.html"><span>Activity</span><strong>→</strong></a><a class="demo-link" href="./reservations.html"><span>Reservations</span><strong>→</strong></a><a class="demo-link" href="./notifications.html"><span>Notifications</span><strong>→</strong></a></div></div></section>
+<section class="demo-card danger-zone"><header class="demo-card__header"><div><h2>Reset demo data</h2><p>Restore the original test user and prototype values.</p></div></header><div class="demo-card__body"><p style="color:var(--color-text-muted);font-size:13px;line-height:1.6">This clears VoltDrive data from localStorage and recreates a signed-in test account.</p><button class="button button--secondary button--block" id="reset-demo-data" type="button" style="margin-top:16px">Reset prototype</button></div></section>
+</aside>
+</div>
+</main>
+</div></div>
+<div class="demo-toast" id="demo-toast" role="status"></div>
+<script type="module" src="./js/pages/demo-controls.js"></script><script type="module" src="./js/components/vehicle-selector.js"></script>
+</body></html>

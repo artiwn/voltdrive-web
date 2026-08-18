@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b0b0d"><meta name="mobile-web-app-capable" content="yes">
+<title>Security & Privacy — VoltDrive</title>
+<link rel="stylesheet" href="./css/core/reset.css"><link rel="stylesheet" href="./css/core/variables.css"><link rel="stylesheet" href="./css/core/typography.css"><link rel="stylesheet" href="./css/components/buttons.css"><link rel="stylesheet" href="./css/components/forms.css"><link rel="stylesheet" href="./css/components/dashboard-cards.css"><link rel="stylesheet" href="./css/layout/app-layout.css"><link rel="stylesheet" href="./css/layout/sidebar.css"><link rel="stylesheet" href="./css/layout/header.css"><link rel="stylesheet" href="./css/pages/account-security.css">
+<link rel="stylesheet" href="./css/core/metallic-theme.css"></head>
+<body class="app-page">
+<div class="app-shell">
+<aside class="sidebar" id="sidebar">
+<a class="sidebar__brand" href="./dashboard.html"><span class="sidebar__mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 4.5 13h6L9 22l10.5-13h-6L13 2Z"/></svg></span><span>VoltDrive</span></a>
+<div class="sidebar__caption">Driver portal</div>
+<nav class="sidebar__nav" aria-label="Primary navigation">
+<a class="nav-link" href="./dashboard.html"><span class="nav-link__icon">⌂</span><span>Dashboard</span></a>
+<a class="nav-link" href="./map.html"><span class="nav-link__icon">⌖</span><span>Map & Stations</span></a><a class="nav-link" href="./route-planner.html"><span class="nav-link__icon">↝</span><span>Route planner</span></a>
+<a class="nav-link" href="./charging.html"><span class="nav-link__icon">ϟ</span><span>Charge</span></a><a class="nav-link" href="./smart-charging.html"><span class="nav-link__icon">◴</span><span>Smart charging</span></a>
+<a class="nav-link" href="./reservations.html"><span class="nav-link__icon">▣</span><span>Reservations</span><span class="nav-link__badge">1</span></a>
+<a class="nav-link" href="./activity.html"><span class="nav-link__icon">↻</span><span>Activity</span></a><a class="nav-link" href="./analytics.html"><span class="nav-link__icon">⌁</span><span>Analytics</span></a>
+<a class="nav-link" href="./vehicles.html"><span class="nav-link__icon">◇</span><span>Vehicles</span></a>
+<a class="nav-link" href="./wallet.html"><span class="nav-link__icon">▤</span><span>Wallet & Payments</span></a>
+<a class="nav-link" href="./subscriptions.html"><span class="nav-link__icon">✦</span><span>Plans & Packages</span></a>
+<a class="nav-link" href="./access-methods.html"><span class="nav-link__icon">⌁</span><span>Access methods</span></a>
+<a class="nav-link" href="./notifications.html"><span class="nav-link__icon">◉</span><span>Notifications</span><span class="nav-link__badge" id="sidebar-notification-count">3</span></a>
+<a class="nav-link" href="./support.html"><span class="nav-link__icon">?</span><span>Support</span></a>
+<a class="nav-link" href="./emergency-assistance.html"><span class="nav-link__icon">!</span><span>Emergency assistance</span></a>
+<a class="nav-link is-active" href="./account-security.html"><span class="nav-link__icon">⌾</span><span>Security & Privacy</span></a>
+<a class="nav-link" href="./settings.html"><span class="nav-link__icon">⚙</span><span>Settings</span></a><a class="nav-link" href="./demo-controls.html"><span class="nav-link__icon">◈</span><span>Demo controls</span></a>
+</nav>
+<div class="sidebar__footer"><div class="sidebar__user"><span class="sidebar__avatar" id="avatar">VD</span><span><strong id="sidebar-name">VoltDrive Driver</strong><span id="sidebar-email">driver@voltdrive.am</span></span></div><button class="nav-link" id="logout-button" type="button" style="width:100%;border:0;background:transparent;cursor:pointer"><span class="nav-link__icon">↪</span><span>Sign out</span></button></div>
+</aside>
+<div class="mobile-overlay" id="mobile-overlay"></div>
+<div class="app-main">
+<header class="app-header"><div class="header__left"><button class="header__menu" id="menu-toggle" type="button" aria-label="Open menu">☰</button><div class="header__title"><strong>Security & Privacy</strong><span>Protect your account and control your data</span></div></div><div class="header__right"><label class="header-control vehicle-select" aria-label="Active vehicle"><span class="vehicle-select__icon" aria-hidden="true">◇</span><select id="vehicle-selector" aria-label="Active vehicle"></select></label><div class="header-control wallet-chip"><span>Wallet</span><strong id="header-wallet-balance">14,500 AMD</strong></div><a class="header-control header-icon" href="./notifications.html" aria-label="Notifications">◉<span class="header-icon__dot" id="header-notification-dot"></span></a></div></header>
+<main class="page-content security-page">
+<section class="security-hero"><div><span class="eyebrow">Account protection</span><h1>Security & privacy center</h1><p>Review sign-in protection, connected devices and how VoltDrive uses your data.</p></div><div class="security-score"><span id="score-ring">82</span><div><strong id="score-label">Strong protection</strong><small>Security score</small></div></div></section>
+<section class="security-summary" id="security-summary"></section>
+<div class="security-layout">
+<section class="security-panel"><header><div><span class="panel-icon">⌾</span><div><h2>Sign-in protection</h2><p>Authentication methods for new and trusted devices.</p></div></div></header><div class="security-options">
+<article><div><strong>Two-step verification</strong><p>Ask for a one-time code on new devices.</p></div><label class="switch"><input type="checkbox" id="two-factor"><span></span></label></article>
+<article><div><strong>Biometric unlock</strong><p>Use fingerprint or face recognition where supported.</p></div><label class="switch"><input type="checkbox" id="biometric"><span></span></label></article>
+<article><div><strong>Suspicious sign-in alerts</strong><p>Notify you when a new location or device signs in.</p></div><label class="switch"><input type="checkbox" id="login-alerts"><span></span></label></article>
+<article><div><strong>RFID session confirmation</strong><p>Confirm every session started with your RFID card.</p></div><label class="switch"><input type="checkbox" id="rfid-alert"><span></span></label></article>
+</div></section>
+<section class="security-panel"><header><div><span class="panel-icon">▣</span><div><h2>Password</h2><p>Demo-only password validation and update flow.</p></div></div></header><form class="password-form" id="password-form"><label class="field"><span>Current password</span><input id="current-password" type="password" autocomplete="current-password"></label><label class="field"><span>New password</span><input id="new-password" type="password" autocomplete="new-password"></label><div class="password-meter"><span id="password-meter-bar"></span></div><small id="password-strength">Use 8+ characters, a number and a symbol.</small><label class="field"><span>Confirm password</span><input id="confirm-password" type="password" autocomplete="new-password"></label><button class="button button--primary" type="submit">Update password</button><p class="form-message" id="password-message"></p></form></section>
+<section class="security-panel security-panel--wide"><header><div><span class="panel-icon">◇</span><div><h2>Active sessions</h2><p>Devices currently signed in to this prototype.</p></div></div><button class="button button--secondary button--compact" id="sign-out-others" type="button">Sign out other devices</button></header><div class="session-list" id="session-list"></div></section>
+<section class="security-panel"><header><div><span class="panel-icon">◌</span><div><h2>Privacy controls</h2><p>Choose what is stored and used for recommendations.</p></div></div></header><div class="security-options">
+<article><div><strong>Location history</strong><p>Save recently visited charging locations.</p></div><label class="switch"><input type="checkbox" id="location-history"><span></span></label></article>
+<article><div><strong>Usage analytics</strong><p>Share anonymous prototype usage statistics.</p></div><label class="switch"><input type="checkbox" id="usage-analytics"><span></span></label></article>
+<article><div><strong>Personalized suggestions</strong><p>Use charging history for station recommendations.</p></div><label class="switch"><input type="checkbox" id="recommendations"><span></span></label></article>
+</div></section>
+<section class="security-panel"><header><div><span class="panel-icon">⇩</span><div><h2>Your data</h2><p>Download or clear data stored in this browser.</p></div></div></header><div class="data-actions"><button class="button button--secondary" id="export-data" type="button">Export account data</button><button class="button button--secondary" id="clear-location-history" type="button">Clear location history</button><button class="danger-button" id="delete-account" type="button">Delete account</button></div><p class="data-note">These actions affect only this visual prototype and localStorage.</p></section>
+</div>
+</main>
+</div></div>
+<div class="modal" id="delete-modal" aria-hidden="true"><div class="modal__backdrop" data-close-modal></div><section class="modal__panel danger-modal" role="dialog" aria-modal="true"><button class="modal__close" type="button" data-close-modal>×</button><span class="danger-symbol">!</span><h2>Delete prototype account?</h2><p>All locally stored VoltDrive data will be removed from this browser.</p><label class="field"><span>Type DELETE to confirm</span><input id="delete-confirmation" type="text" autocomplete="off"></label><div class="modal__actions"><button class="button button--secondary" type="button" data-close-modal>Cancel</button><button class="danger-button" id="confirm-delete" type="button" disabled>Delete account</button></div></section></div>
+<div class="security-toast" id="security-toast" role="status"></div>
+<script type="module" src="./js/pages/account-security.js"></script><script type="module" src="./js/components/vehicle-selector.js"></script>
+</body></html>

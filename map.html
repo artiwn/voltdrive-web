@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b0b0d"><meta name="mobile-web-app-capable" content="yes">
+<title>Map & Stations — VoltDrive</title>
+<link rel="stylesheet" href="./css/core/reset.css"><link rel="stylesheet" href="./css/core/variables.css"><link rel="stylesheet" href="./css/core/typography.css"><link rel="stylesheet" href="./css/components/buttons.css"><link rel="stylesheet" href="./css/components/dashboard-cards.css"><link rel="stylesheet" href="./css/layout/app-layout.css"><link rel="stylesheet" href="./css/layout/sidebar.css"><link rel="stylesheet" href="./css/layout/header.css"><link rel="stylesheet" href="./css/pages/map.css">
+<link rel="stylesheet" href="./css/core/metallic-theme.css"></head>
+<body class="app-page">
+<div class="app-shell">
+<aside class="sidebar" id="sidebar">
+<a class="sidebar__brand" href="./dashboard.html"><span class="sidebar__mark">ϟ</span><span>VoltDrive</span></a>
+<div class="sidebar__caption">Driver portal</div>
+<nav class="sidebar__nav" aria-label="Primary navigation">
+<a class="nav-link" href="./dashboard.html"><span class="nav-link__icon">⌂</span><span>Dashboard</span></a>
+<a class="nav-link is-active" href="./map.html"><span class="nav-link__icon">⌖</span><span>Map & Stations</span></a><a class="nav-link" href="./route-planner.html"><span class="nav-link__icon">↝</span><span>Route planner</span></a>
+<a class="nav-link" href="./charging.html"><span class="nav-link__icon">ϟ</span><span>Charge</span></a><a class="nav-link" href="./smart-charging.html"><span class="nav-link__icon">◴</span><span>Smart charging</span></a>
+<a class="nav-link" href="./reservations.html"><span class="nav-link__icon">▣</span><span>Reservations</span><span class="nav-link__badge">1</span></a>
+<a class="nav-link" href="./activity.html"><span class="nav-link__icon">↻</span><span>Activity</span></a><a class="nav-link" href="./analytics.html"><span class="nav-link__icon">⌁</span><span>Analytics</span></a>
+<a class="nav-link" href="./vehicles.html"><span class="nav-link__icon">◇</span><span>Vehicles</span></a>
+<a class="nav-link" href="./wallet.html"><span class="nav-link__icon">▤</span><span>Wallet & Payments</span></a>
+<a class="nav-link" href="./subscriptions.html"><span class="nav-link__icon">✦</span><span>Plans & Packages</span></a>
+<a class="nav-link" href="./access-methods.html"><span class="nav-link__icon">⌁</span><span>Access methods</span></a>
+<a class="nav-link" href="./notifications.html"><span class="nav-link__icon">◉</span><span>Notifications</span><span class="nav-link__badge">3</span></a>
+<a class="nav-link" href="./support.html"><span class="nav-link__icon">?</span><span>Support</span></a>
+<a class="nav-link" href="./emergency-assistance.html"><span class="nav-link__icon">!</span><span>Emergency assistance</span></a>
+<a class="nav-link" href="./account-security.html"><span class="nav-link__icon">⌾</span><span>Security & Privacy</span></a>
+<a class="nav-link" href="./settings.html"><span class="nav-link__icon">⚙</span><span>Settings</span></a><a class="nav-link" href="./demo-controls.html"><span class="nav-link__icon">◈</span><span>Demo controls</span></a>
+</nav>
+<div class="sidebar__footer"><div class="sidebar__user"><span class="sidebar__avatar" id="avatar">VD</span><span><strong id="sidebar-name">VoltDrive Driver</strong><span id="sidebar-email">driver@voltdrive.am</span></span></div><button class="nav-link" id="logout-button" type="button" style="width:100%;border:0;background:transparent;cursor:pointer"><span class="nav-link__icon">↪</span><span>Sign out</span></button></div>
+</aside>
+<div class="mobile-overlay" id="mobile-overlay"></div>
+<div class="app-main">
+<header class="app-header"><div class="header__left"><button class="header__menu" id="menu-toggle" type="button" aria-label="Open menu">☰</button><div class="header__title"><strong>Map & Stations</strong><span>Find available charging near you</span></div></div><div class="header__right"><label class="header-control vehicle-select" aria-label="Active vehicle"><span class="vehicle-select__icon" aria-hidden="true">◇</span><select id="vehicle-selector" aria-label="Active vehicle"></select></label><a class="header-control header-icon" href="./notifications.html" aria-label="Notifications">◉<span class="header-icon__dot"></span></a></div></header>
+<main class="page-content map-page">
+<section class="map-toolbar">
+<div class="search-field"><span>⌕</span><input id="station-search" type="search" placeholder="Search station, address or connector"></div>
+<div class="toolbar-actions"><a class="filter-button route-planner-link" href="./route-planner.html">Open route planner</a><button class="filter-button is-active" type="button" data-filter="all">All</button><button class="filter-button" type="button" data-filter="available">Available now</button><button class="filter-button" type="button" data-filter="fast">150+ kW</button><button class="filter-button" type="button" data-filter="reservable">Reservable</button><select id="connector-filter" class="filter-select"><option value="all">All connectors</option><option value="CCS2">CCS2</option><option value="CHAdeMO">CHAdeMO</option><option value="Type 2">Type 2</option></select><div class="view-switch"><button class="is-active" type="button" data-view="map">Map</button><button type="button" data-view="list">List</button></div></div>
+</section>
+<section class="map-layout" id="map-layout">
+<div class="map-canvas" id="map-canvas" aria-label="Charging station map">
+<div class="map-grid"></div><div class="map-road road-one"></div><div class="map-road road-two"></div><div class="map-road road-three"></div>
+<div class="current-location" title="Your location"><span></span></div>
+<div id="map-markers"></div>
+<div class="map-legend"><span><i class="legend-dot available"></i>Available</span><span><i class="legend-dot busy"></i>Busy</span><span><i class="legend-dot reserved"></i>Reserved</span><span><i class="legend-dot offline"></i>Offline</span></div>
+</div>
+<aside class="station-panel"><div class="station-panel__header"><div><strong id="result-count">0 stations</strong><span>Near Yerevan, Armenia</span></div><select id="sort-select" class="filter-select"><option value="distance">Nearest</option><option value="availability">Most available</option><option value="price">Lowest price</option><option value="power">Highest power</option></select></div><div class="station-results" id="station-results"></div></aside>
+</section>
+</main>
+</div></div>
+<div class="map-toast" id="map-toast" role="status"></div>
+<script type="module" src="./js/pages/map.js"></script>
+<script type="module" src="./js/components/vehicle-selector.js"></script>
+</body></html>

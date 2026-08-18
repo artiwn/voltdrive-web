@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b0b0d"><meta name="mobile-web-app-capable" content="yes">
+<title>Access methods — VoltDrive</title>
+<link rel="stylesheet" href="./css/core/reset.css"><link rel="stylesheet" href="./css/core/variables.css"><link rel="stylesheet" href="./css/core/typography.css"><link rel="stylesheet" href="./css/components/buttons.css"><link rel="stylesheet" href="./css/components/forms.css"><link rel="stylesheet" href="./css/components/dashboard-cards.css"><link rel="stylesheet" href="./css/layout/app-layout.css"><link rel="stylesheet" href="./css/layout/sidebar.css"><link rel="stylesheet" href="./css/layout/header.css"><link rel="stylesheet" href="./css/pages/access-methods.css">
+<link rel="stylesheet" href="./css/core/metallic-theme.css"></head>
+<body class="app-page">
+<div class="app-shell">
+<aside class="sidebar" id="sidebar">
+<a class="sidebar__brand" href="./dashboard.html"><span class="sidebar__mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 4.5 13h6L9 22l10.5-13h-6L13 2Z"/></svg></span><span>VoltDrive</span></a>
+<div class="sidebar__caption">Driver portal</div>
+<nav class="sidebar__nav" aria-label="Primary navigation">
+<a class="nav-link" href="./dashboard.html"><span class="nav-link__icon">⌂</span><span>Dashboard</span></a>
+<a class="nav-link" href="./map.html"><span class="nav-link__icon">⌖</span><span>Map & Stations</span></a><a class="nav-link" href="./route-planner.html"><span class="nav-link__icon">↝</span><span>Route planner</span></a>
+<a class="nav-link" href="./charging.html"><span class="nav-link__icon">ϟ</span><span>Charge</span></a><a class="nav-link" href="./smart-charging.html"><span class="nav-link__icon">◴</span><span>Smart charging</span></a>
+<a class="nav-link" href="./reservations.html"><span class="nav-link__icon">▣</span><span>Reservations</span><span class="nav-link__badge">1</span></a>
+<a class="nav-link" href="./activity.html"><span class="nav-link__icon">↻</span><span>Activity</span></a><a class="nav-link" href="./analytics.html"><span class="nav-link__icon">⌁</span><span>Analytics</span></a>
+<a class="nav-link" href="./vehicles.html"><span class="nav-link__icon">◇</span><span>Vehicles</span></a>
+<a class="nav-link" href="./wallet.html"><span class="nav-link__icon">▤</span><span>Wallet & Payments</span></a>
+<a class="nav-link" href="./subscriptions.html"><span class="nav-link__icon">✦</span><span>Plans & Packages</span></a>
+<a class="nav-link is-active" href="./access-methods.html"><span class="nav-link__icon">⌁</span><span>Access methods</span></a>
+<a class="nav-link" href="./notifications.html"><span class="nav-link__icon">◉</span><span>Notifications</span><span class="nav-link__badge" id="sidebar-notification-count">3</span></a>
+<a class="nav-link" href="./support.html"><span class="nav-link__icon">?</span><span>Support</span></a>
+<a class="nav-link" href="./emergency-assistance.html"><span class="nav-link__icon">!</span><span>Emergency assistance</span></a>
+<a class="nav-link" href="./account-security.html"><span class="nav-link__icon">⌾</span><span>Security & Privacy</span></a>
+<a class="nav-link" href="./settings.html"><span class="nav-link__icon">⚙</span><span>Settings</span></a><a class="nav-link" href="./demo-controls.html"><span class="nav-link__icon">◈</span><span>Demo controls</span></a>
+</nav>
+<div class="sidebar__footer"><div class="sidebar__user"><span class="sidebar__avatar" id="avatar">VD</span><span><strong id="sidebar-name">VoltDrive Driver</strong><span id="sidebar-email">driver@voltdrive.am</span></span></div><button class="nav-link" id="logout-button" type="button" style="width:100%;border:0;background:transparent;cursor:pointer"><span class="nav-link__icon">↪</span><span>Sign out</span></button></div>
+</aside>
+<div class="mobile-overlay" id="mobile-overlay"></div>
+<div class="app-main">
+<header class="app-header"><div class="header__left"><button class="header__menu" id="menu-toggle" type="button" aria-label="Open menu">☰</button><div class="header__title"><strong>Access methods</strong><span>QR, RFID and Plug & Charge</span></div></div><div class="header__right"><label class="header-control vehicle-select" aria-label="Active vehicle"><span class="vehicle-select__icon" aria-hidden="true">◇</span><select id="vehicle-selector" aria-label="Active vehicle"></select></label><div class="header-control wallet-chip"><span>Wallet</span><strong id="header-wallet-balance">14,500 AMD</strong></div><a class="header-control header-icon" href="./notifications.html" aria-label="Notifications">◉<span class="header-icon__dot" id="header-notification-dot"></span></a></div></header>
+<main class="page-content access-page">
+<section class="access-hero"><div><span class="eyebrow">Driver identification</span><h1>Start charging your way</h1><p>Manage the methods used to identify your account and authorize a charging session.</p></div><button class="button button--primary" id="scan-qr-button" type="button">Scan charger QR</button></section>
+<section class="access-summary" id="access-summary"></section>
+<div class="access-grid">
+<section class="access-card access-card--featured"><header><div class="access-card__icon">▦</div><div><span class="eyebrow">Quick start</span><h2>QR or charger code</h2><p>Scan the label on the charger or enter its code manually.</p></div></header><div class="code-entry"><label class="field"><span>Charger code</span><input id="charger-code" type="text" value="AM-YM-101" maxlength="18"></label><button class="button button--primary" id="use-code-button" type="button">Continue</button></div><div class="access-note"><span>⌾</span><p>The prototype will open the charging flow with a simulated charger verification.</p></div></section>
+<section class="access-card"><header><div class="access-card__icon">▣</div><div><span class="eyebrow">Tap to charge</span><h2>RFID cards</h2><p>Use a physical card or key fob at compatible chargers.</p></div><button class="button button--secondary button--compact" id="add-rfid-button" type="button">Add RFID</button></header><div class="rfid-list" id="rfid-list"></div></section>
+<section class="access-card"><header><div class="access-card__icon">◇</div><div><span class="eyebrow">Automatic</span><h2>Plug & Charge</h2><p>Your vehicle and charger securely identify each other after connection.</p></div></header><div class="pnc-panel" id="pnc-panel"></div></section>
+<section class="access-card"><header><div class="access-card__icon">⌁</div><div><span class="eyebrow">Other options</span><h2>Available identification</h2><p>Methods supported by the visual prototype.</p></div></header><div class="method-list"><article><span>▤</span><div><strong>Bank card terminal</strong><small>Tap a supported card directly at the charger.</small></div><b>Available</b></article><article><span>▦</span><div><strong>Mobile app</strong><small>Start from Location Details or the Charge page.</small></div><b>Default</b></article><article><span>◇</span><div><strong>Vehicle VIN</strong><small>Used together with Plug & Charge certificates.</small></div><b>Linked</b></article></div></section>
+</div>
+</main>
+</div></div>
+<div class="access-modal" id="qr-modal" aria-hidden="true"><div class="access-modal__backdrop" data-close-qr></div><section class="access-modal__panel" role="dialog" aria-modal="true" aria-labelledby="qr-title"><button class="access-modal__close" type="button" data-close-qr>×</button><span class="eyebrow">Camera preview</span><h2 id="qr-title">Scan charger QR</h2><div class="scanner-frame"><div class="scanner-corners"></div><div class="scanner-line"></div><span>QR</span></div><p>Place the charger QR code inside the frame.</p><button class="button button--primary button--block" id="simulate-scan-button" type="button">Simulate successful scan</button></section></div>
+<div class="access-modal" id="rfid-modal" aria-hidden="true"><div class="access-modal__backdrop" data-close-rfid></div><section class="access-modal__panel" role="dialog" aria-modal="true" aria-labelledby="rfid-title"><button class="access-modal__close" type="button" data-close-rfid>×</button><span class="eyebrow">New access card</span><h2 id="rfid-title">Add RFID card</h2><form id="rfid-form"><label class="field"><span>Card name</span><input name="name" type="text" value="My RFID card" required maxlength="40"></label><label class="field"><span>Card number</span><input name="number" type="text" value="RFID-4829-1037" required maxlength="24"></label><label class="field"><span>Assign to vehicle</span><select name="vehicle" id="rfid-vehicle"></select></label><div class="modal-actions"><button class="button button--secondary" type="button" data-close-rfid>Cancel</button><button class="button button--primary" type="submit">Add card</button></div></form></section></div>
+<div class="settings-toast" id="access-toast" role="status"></div>
+<script type="module" src="./js/pages/access-methods.js"></script><script type="module" src="./js/components/vehicle-selector.js"></script>
+</body></html>

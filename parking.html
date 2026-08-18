@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b0b0d"><meta name="mobile-web-app-capable" content="yes">
+<title>Parking after charging — VoltDrive</title>
+<link rel="stylesheet" href="./css/core/reset.css"><link rel="stylesheet" href="./css/core/variables.css"><link rel="stylesheet" href="./css/core/typography.css"><link rel="stylesheet" href="./css/components/buttons.css"><link rel="stylesheet" href="./css/layout/app-layout.css"><link rel="stylesheet" href="./css/layout/sidebar.css"><link rel="stylesheet" href="./css/layout/header.css"><link rel="stylesheet" href="./css/pages/parking.css">
+<link rel="stylesheet" href="./css/core/metallic-theme.css"></head>
+<body class="app-page">
+<div class="app-shell">
+<aside class="sidebar" id="sidebar">
+<a class="sidebar__brand" href="./dashboard.html"><span class="sidebar__mark">ϟ</span><span>VoltDrive</span></a><div class="sidebar__caption">Driver portal</div>
+<nav class="sidebar__nav" aria-label="Primary navigation">
+<a class="nav-link" href="./dashboard.html"><span class="nav-link__icon">⌂</span><span>Dashboard</span></a><a class="nav-link" href="./map.html"><span class="nav-link__icon">⌖</span><span>Map & Stations</span></a><a class="nav-link" href="./route-planner.html"><span class="nav-link__icon">↝</span><span>Route planner</span></a><a class="nav-link is-active" href="./charging.html"><span class="nav-link__icon">ϟ</span><span>Charge</span></a><a class="nav-link" href="./reservations.html"><span class="nav-link__icon">▣</span><span>Reservations</span><span class="nav-link__badge" id="sidebar-reservation-count">1</span></a><a class="nav-link" href="./activity.html"><span class="nav-link__icon">↻</span><span>Activity</span></a><a class="nav-link" href="./analytics.html"><span class="nav-link__icon">⌁</span><span>Analytics</span></a><a class="nav-link" href="./vehicles.html"><span class="nav-link__icon">◇</span><span>Vehicles</span></a><a class="nav-link" href="./wallet.html"><span class="nav-link__icon">▤</span><span>Wallet & Payments</span></a>
+<a class="nav-link" href="./subscriptions.html"><span class="nav-link__icon">✦</span><span>Plans & Packages</span></a><a class="nav-link" href="./access-methods.html"><span class="nav-link__icon">⌁</span><span>Access methods</span></a>
+<a class="nav-link" href="./notifications.html"><span class="nav-link__icon">◉</span><span>Notifications</span><span class="nav-link__badge" id="sidebar-notification-count">3</span></a><a class="nav-link" href="./support.html"><span class="nav-link__icon">?</span><span>Support</span></a>
+<a class="nav-link" href="./emergency-assistance.html"><span class="nav-link__icon">!</span><span>Emergency assistance</span></a><a class="nav-link" href="./account-security.html"><span class="nav-link__icon">⌾</span><span>Security & Privacy</span></a>
+<a class="nav-link" href="./settings.html"><span class="nav-link__icon">⚙</span><span>Settings</span></a><a class="nav-link" href="./demo-controls.html"><span class="nav-link__icon">◈</span><span>Demo controls</span></a>
+</nav>
+<div class="sidebar__footer"><div class="sidebar__user"><span class="sidebar__avatar" id="avatar">VD</span><span><strong id="sidebar-name">VoltDrive Driver</strong><span id="sidebar-email">driver@voltdrive.am</span></span></div><button class="nav-link" id="logout-button" type="button" style="width:100%;border:0;background:transparent;cursor:pointer"><span class="nav-link__icon">↪</span><span>Sign out</span></button></div>
+</aside>
+<div class="mobile-overlay" id="mobile-overlay"></div><div class="app-main">
+<header class="app-header"><div class="header__left"><button class="header__menu" id="menu-toggle" type="button" aria-label="Open menu">☰</button><div class="header__title"><strong>Parking after charging</strong><span>Move your vehicle before idle fees begin</span></div></div><div class="header__right"><label class="header-control vehicle-select" aria-label="Active vehicle"><span class="vehicle-select__icon" aria-hidden="true">◇</span><select id="vehicle-selector" aria-label="Active vehicle"></select></label></div></header>
+<main class="page-content parking-page">
+<section class="parking-hero" id="parking-hero">
+<div><span class="eyebrow">Charging completed</span><h1 id="parking-title">Please move your vehicle.</h1><p id="parking-location">Yerevan Mall EV Station · Bay 04</p></div>
+<div class="parking-timer-card" id="parking-timer-card"><span id="timer-label">Free parking remaining</span><strong id="parking-countdown">04:59</strong><small id="timer-note">Idle fee starts when this timer reaches zero</small></div>
+</section>
+<section class="parking-layout">
+<div class="parking-main">
+<section class="parking-panel status-panel"><header><div><span class="eyebrow">Parking status</span><h2 id="status-heading">Grace period is active</h2></div><span class="status-badge status-badge--success" id="parking-status">No fee</span></header>
+<div class="parking-progress"><div class="parking-progress__track"><span id="parking-progress-bar"></span></div><div class="parking-progress__labels"><span>Charging ended</span><span>Idle fee starts</span></div></div>
+<div class="parking-summary-grid"><div><span>Vehicle</span><strong id="parking-vehicle">Tesla Model Y</strong></div><div><span>Parking bay</span><strong id="parking-bay">Bay 04</strong></div><div><span>Charger</span><strong id="parking-charger">C-101</strong></div><div><span>Idle fee</span><strong id="parking-rate">50 AMD/min</strong></div></div>
+<div class="idle-fee-banner" id="idle-fee-banner" hidden><span>!</span><div><strong>Idle fee is now active</strong><small>Your current idle charge is <b id="idle-cost">0 AMD</b>. Move your vehicle to stop further charges.</small></div></div>
+</section>
+<section class="parking-panel action-panel"><span class="eyebrow">What to do next</span><h2>Disconnect and leave the charging bay</h2><div class="parking-steps"><div class="parking-step is-done"><span>✓</span><div><strong>Charging stopped</strong><small>The session and payment were completed.</small></div></div><div class="parking-step"><span>2</span><div><strong>Disconnect the cable</strong><small>Return the connector safely to the charger.</small></div></div><div class="parking-step"><span>3</span><div><strong>Move your vehicle</strong><small>Free the bay for the next driver.</small></div></div></div><div class="parking-actions"><button class="button button--primary" id="vehicle-removed-button" type="button">Vehicle removed</button><button class="button button--secondary" id="extend-button" type="button">Extend parking</button><button class="button button--secondary" id="navigate-button" type="button">Navigate to vehicle</button></div></section>
+</div>
+<aside class="parking-side">
+<section class="parking-panel"><span class="eyebrow">Session summary</span><h2 id="side-location">Yerevan Mall EV Station</h2><div class="side-summary"><div><span>Energy delivered</span><strong id="side-energy">—</strong></div><div><span>Charging paid</span><strong id="side-charge-cost">—</strong></div><div><span>Parking fee</span><strong id="side-parking-cost">0 AMD</strong></div><div><span>Total</span><strong id="side-total">—</strong></div></div></section>
+<section class="parking-panel demo-panel"><strong>Prototype controls</strong><p>Use this to preview the idle-fee state without waiting for the countdown.</p><button class="button button--secondary button--block" id="preview-idle-button" type="button">Preview idle fee</button></section>
+<section class="parking-panel help-panel"><strong>Bay blocked or cable stuck?</strong><p>Report the issue and include the charger or bay number.</p><a href="./support.html" class="text-link">Report a problem →</a></section>
+</aside>
+</section>
+<section class="parking-complete" id="parking-complete" hidden><div class="parking-complete__icon">✓</div><span class="eyebrow">Parking completed</span><h1>Your vehicle has left the bay.</h1><p id="parking-complete-copy">No idle fee was charged.</p><div class="parking-complete__actions"><a class="button button--primary" href="./dashboard.html">Go to Dashboard</a><a class="button button--secondary" href="./activity.html">View activity</a></div></section>
+</main></div></div><div class="parking-toast" id="parking-toast" role="status"></div>
+<script type="module" src="./js/pages/parking.js"></script><script type="module" src="./js/components/vehicle-selector.js"></script>
+</body></html>

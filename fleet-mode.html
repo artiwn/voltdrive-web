@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b0b0d"><title>Fleet Mode — VoltDrive</title>
+<link rel="stylesheet" href="./css/core/reset.css"><link rel="stylesheet" href="./css/core/variables.css"><link rel="stylesheet" href="./css/core/typography.css"><link rel="stylesheet" href="./css/components/buttons.css"><link rel="stylesheet" href="./css/layout/app-layout.css"><link rel="stylesheet" href="./css/layout/sidebar.css"><link rel="stylesheet" href="./css/layout/header.css"><link rel="stylesheet" href="./css/pages/fleet-mode.css"><link rel="stylesheet" href="./css/core/metallic-theme.css"></head>
+<body class="app-page"><div class="app-shell"><aside class="sidebar" id="sidebar">
+<a class="sidebar__brand" href="./dashboard.html"><span class="sidebar__mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 4.5 13h6L9 22l10.5-13h-6L13 2Z"/></svg></span><span>VoltDrive</span></a>
+<div class="sidebar__caption">Driver portal</div>
+<nav class="sidebar__nav" aria-label="Primary navigation">
+<a class="nav-link" href="./dashboard.html"><span class="nav-link__icon">⌂</span><span>Dashboard</span></a>
+<a class="nav-link" href="./map.html"><span class="nav-link__icon">⌖</span><span>Map & Stations</span></a><a class="nav-link" href="./route-planner.html"><span class="nav-link__icon">↝</span><span>Route planner</span></a>
+<a class="nav-link" href="./charging.html"><span class="nav-link__icon">ϟ</span><span>Charge</span></a><a class="nav-link" href="./smart-charging.html"><span class="nav-link__icon">◴</span><span>Smart charging</span></a>
+<a class="nav-link" href="./reservations.html"><span class="nav-link__icon">▣</span><span>Reservations</span><span class="nav-link__badge" id="sidebar-reservation-count">1</span></a>
+<a class="nav-link" href="./activity.html"><span class="nav-link__icon">↻</span><span>Activity</span></a><a class="nav-link" href="./analytics.html"><span class="nav-link__icon">⌁</span><span>Analytics</span></a>
+<a class="nav-link" href="./vehicles.html"><span class="nav-link__icon">◇</span><span>Vehicles</span></a>
+<a class="nav-link is-active" href="./fleet-mode.html"><span class="nav-link__icon">▦</span><span>Fleet mode</span></a>
+<a class="nav-link" href="./wallet.html"><span class="nav-link__icon">▤</span><span>Wallet & Payments</span></a>
+<a class="nav-link" href="./subscriptions.html"><span class="nav-link__icon">✦</span><span>Plans & Packages</span></a>
+<a class="nav-link" href="./access-methods.html"><span class="nav-link__icon">⌁</span><span>Access methods</span></a>
+<a class="nav-link" href="./notifications.html"><span class="nav-link__icon">◉</span><span>Notifications</span><span class="nav-link__badge" id="sidebar-notification-count">3</span></a>
+<a class="nav-link" href="./support.html"><span class="nav-link__icon">?</span><span>Support</span></a>
+<a class="nav-link" href="./emergency-assistance.html"><span class="nav-link__icon">!</span><span>Emergency assistance</span></a>
+<a class="nav-link" href="./account-security.html"><span class="nav-link__icon">⌾</span><span>Security & Privacy</span></a>
+<a class="nav-link" href="./settings.html"><span class="nav-link__icon">⚙</span><span>Settings</span></a><a class="nav-link" href="./demo-controls.html"><span class="nav-link__icon">◈</span><span>Demo controls</span></a>
+</nav>
+<div class="sidebar__footer"><div class="sidebar__user"><span class="sidebar__avatar" id="avatar">VD</span><span><strong id="sidebar-name">VoltDrive Driver</strong><span id="sidebar-email">driver@voltdrive.am</span></span></div><button class="nav-link" id="logout-button" type="button" style="width:100%;border:0;background:transparent;cursor:pointer"><span class="nav-link__icon">↪</span><span>Sign out</span></button></div>
+</aside>
+<div class="mobile-overlay" id="mobile-overlay"></div>
+<div class="app-main">
+<header class="app-header"><div class="header__left"><button class="header__menu" id="menu-toggle" type="button" aria-label="Open menu">☰</button><div class="header__title"><strong>Fleet mode</strong><span>Corporate driver profile and charging policy</span></div></div><div class="header__right"><label class="header-control vehicle-select" aria-label="Active vehicle"><span class="vehicle-select__icon" aria-hidden="true">◇</span><select id="vehicle-selector" aria-label="Active vehicle"></select></label><div class="header-control wallet-chip"><span>Wallet</span><strong id="header-wallet-balance">14,500 AMD</strong></div><a class="header-control header-icon" href="./notifications.html" aria-label="Notifications">◉<span class="header-icon__dot" id="header-notification-dot"></span></a></div></header><main class="page-content"><div class="fleet-page">
+<section class="fleet-hero"><div><span class="fleet-kicker">Corporate driver</span><h1>Work charging, separated from personal use.</h1><p>Switch billing profiles, use assigned fleet vehicles and follow company charging rules in one place.</p></div><div class="profile-switch" role="group" aria-label="Billing profile"><button class="is-active" data-profile="corporate">Corporate</button><button data-profile="personal">Personal</button></div></section>
+<section class="fleet-summary" id="fleet-summary"></section>
+<div class="fleet-layout"><div class="fleet-stack">
+<section class="fleet-panel"><header><div><span class="panel-icon">▦</span><div><h2>Assigned vehicles</h2><p>Vehicles available under your company profile</p></div></div></header><div id="fleet-vehicles" class="fleet-vehicles"></div></section>
+<section class="fleet-panel"><header><div><span class="panel-icon">⌖</span><div><h2>Charging policy</h2><p>Rules configured by the fleet manager</p></div></div></header><div id="fleet-policy" class="policy-grid"></div></section>
+<section class="fleet-panel"><header><div><span class="panel-icon">↻</span><div><h2>Corporate charging activity</h2><p>Recent work-related sessions</p></div></div><a href="./activity.html">View all →</a></header><div id="fleet-activity" class="fleet-activity"></div></section>
+</div><aside class="fleet-stack">
+<section class="fleet-panel company-card"><span class="company-logo">TML</span><h2>TML Consulting</h2><p>Corporate mobility account</p><div class="company-meta"><div><span>Driver ID</span><strong>DRV-1048</strong></div><div><span>Department</span><strong>Operations</strong></div><div><span>Manager</span><strong>Fleet Admin</strong></div></div></section>
+<section class="fleet-panel"><header><div><span class="panel-icon">▤</span><div><h2>Corporate balance</h2><p>Managed by your organization</p></div></div></header><div class="corporate-balance"><strong id="corporate-balance">25,000 AMD</strong><span>Monthly allowance remaining</span></div><div class="budget-track"><span id="budget-bar"></span></div><div class="budget-row"><span>Used this month</span><strong id="budget-used">15,000 AMD</strong></div><div class="budget-row"><span>Monthly limit</span><strong>40,000 AMD</strong></div></section>
+<section class="fleet-panel"><header><div><span class="panel-icon">✓</span><div><h2>Quick actions</h2><p>Corporate charging shortcuts</p></div></div></header><div class="fleet-actions"><a class="button button--primary" href="./map.html">Find approved station</a><a class="button button--secondary" href="./reservation.html">Reserve for work</a><button class="button button--secondary" id="download-report" type="button">Download expense report</button></div></section>
+</aside></div></div></main></div></div><div class="fleet-toast" id="fleet-toast" role="status"></div><script type="module" src="./js/pages/fleet-mode.js"></script><script type="module" src="./js/components/vehicle-selector.js"></script></body></html>

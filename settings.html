@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b0b0d"><meta name="mobile-web-app-capable" content="yes">
+<title>Settings — VoltDrive</title>
+<link rel="stylesheet" href="./css/core/reset.css"><link rel="stylesheet" href="./css/core/variables.css"><link rel="stylesheet" href="./css/core/typography.css"><link rel="stylesheet" href="./css/components/buttons.css"><link rel="stylesheet" href="./css/components/forms.css"><link rel="stylesheet" href="./css/components/dashboard-cards.css"><link rel="stylesheet" href="./css/layout/app-layout.css"><link rel="stylesheet" href="./css/layout/sidebar.css"><link rel="stylesheet" href="./css/layout/header.css"><link rel="stylesheet" href="./css/pages/settings.css">
+<link rel="stylesheet" href="./css/core/metallic-theme.css"></head>
+<body class="app-page">
+<div class="app-shell">
+<aside class="sidebar" id="sidebar">
+<a class="sidebar__brand" href="./dashboard.html"><span class="sidebar__mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 4.5 13h6L9 22l10.5-13h-6L13 2Z"/></svg></span><span>VoltDrive</span></a>
+<div class="sidebar__caption">Driver portal</div>
+<nav class="sidebar__nav" aria-label="Primary navigation">
+<a class="nav-link" href="./dashboard.html"><span class="nav-link__icon">⌂</span><span>Dashboard</span></a>
+<a class="nav-link" href="./map.html"><span class="nav-link__icon">⌖</span><span>Map & Stations</span></a><a class="nav-link" href="./route-planner.html"><span class="nav-link__icon">↝</span><span>Route planner</span></a>
+<a class="nav-link" href="./charging.html"><span class="nav-link__icon">ϟ</span><span>Charge</span></a><a class="nav-link" href="./smart-charging.html"><span class="nav-link__icon">◴</span><span>Smart charging</span></a>
+<a class="nav-link" href="./reservations.html"><span class="nav-link__icon">▣</span><span>Reservations</span><span class="nav-link__badge">1</span></a>
+<a class="nav-link" href="./activity.html"><span class="nav-link__icon">↻</span><span>Activity</span></a><a class="nav-link" href="./analytics.html"><span class="nav-link__icon">⌁</span><span>Analytics</span></a>
+<a class="nav-link" href="./vehicles.html"><span class="nav-link__icon">◇</span><span>Vehicles</span></a>
+<a class="nav-link" href="./wallet.html"><span class="nav-link__icon">▤</span><span>Wallet & Payments</span></a>
+<a class="nav-link" href="./subscriptions.html"><span class="nav-link__icon">✦</span><span>Plans & Packages</span></a>
+<a class="nav-link" href="./access-methods.html"><span class="nav-link__icon">⌁</span><span>Access methods</span></a>
+<a class="nav-link" href="./notifications.html"><span class="nav-link__icon">◉</span><span>Notifications</span><span class="nav-link__badge" id="sidebar-notification-count">3</span></a>
+<a class="nav-link" href="./support.html"><span class="nav-link__icon">?</span><span>Support</span></a>
+<a class="nav-link" href="./emergency-assistance.html"><span class="nav-link__icon">!</span><span>Emergency assistance</span></a>
+<a class="nav-link is-active" href="./settings.html"><span class="nav-link__icon">⚙</span><span>Settings</span></a><a class="nav-link" href="./demo-controls.html"><span class="nav-link__icon">◈</span><span>Demo controls</span></a>
+</nav>
+<div class="sidebar__footer"><div class="sidebar__user"><span class="sidebar__avatar" id="avatar">VD</span><span><strong id="sidebar-name">VoltDrive Driver</strong><span id="sidebar-email">driver@voltdrive.am</span></span></div><button class="nav-link" id="logout-button" type="button" style="width:100%;border:0;background:transparent;cursor:pointer"><span class="nav-link__icon">↪</span><span>Sign out</span></button></div>
+</aside>
+<div class="mobile-overlay" id="mobile-overlay"></div>
+<div class="app-main">
+<header class="app-header"><div class="header__left"><button class="header__menu" id="menu-toggle" type="button" aria-label="Open menu">☰</button><div class="header__title"><strong>Settings</strong><span>Profile, preferences, security and privacy</span></div></div><div class="header__right"><label class="header-control vehicle-select" aria-label="Active vehicle"><span class="vehicle-select__icon" aria-hidden="true">◇</span><select id="vehicle-selector" aria-label="Active vehicle"></select></label><div class="header-control wallet-chip"><span>Wallet</span><strong id="header-wallet-balance">14,500 AMD</strong></div><a class="header-control header-icon" href="./notifications.html" aria-label="Notifications">◉<span class="header-icon__dot" id="header-notification-dot"></span></a></div></header>
+<main class="page-content settings-page">
+<section class="settings-hero"><div><span class="eyebrow">Account preferences</span><h1>Settings & profile</h1><p>Manage your personal information, app preferences, security and connected devices.</p></div><button class="button button--primary" id="save-all-button" type="button">Save all changes</button></section>
+<div class="settings-layout">
+<aside class="settings-nav" aria-label="Settings sections">
+<button class="is-active" type="button" data-section="profile"><span>◇</span>Profile</button>
+<button type="button" data-section="preferences"><span>◫</span>Preferences</button>
+<button type="button" data-section="notifications"><span>◉</span>Notifications</button>
+<button type="button" data-section="security"><span>⌾</span>Security</button>
+<button type="button" data-section="privacy"><span>◌</span>Privacy</button>
+</aside>
+<div class="settings-content">
+<section class="settings-section is-active" data-settings-panel="profile">
+<header><div><h2>Personal profile</h2><p>Information used for your VoltDrive account and receipts.</p></div><span class="status-pill status-pill--success">Verified account</span></header>
+<form class="settings-form" id="profile-form">
+<div class="profile-summary"><span class="profile-avatar" id="profile-avatar">VD</span><div><strong id="profile-summary-name">VoltDrive Driver</strong><span id="profile-summary-email">driver@voltdrive.am</span></div><button class="button button--secondary button--compact" id="change-avatar-button" type="button">Change photo</button></div>
+<div class="form-grid"><label class="field"><span>Full name</span><input id="full-name" type="text" autocomplete="name"></label><label class="field"><span>Email address</span><input id="email" type="email" autocomplete="email"></label><label class="field"><span>Phone number</span><input id="phone" type="tel" autocomplete="tel" placeholder="+374 00 000000"></label><label class="field"><span>Company or fleet</span><input id="company" type="text" placeholder="Optional"></label></div>
+<div class="settings-actions"><button class="button button--primary" type="submit">Save profile</button></div>
+</form>
+</section>
+<section class="settings-section" data-settings-panel="preferences">
+<header><div><h2>Regional preferences</h2><p>Language, country, currency and measurement settings.</p></div></header>
+<form class="settings-form" id="preferences-form"><div class="form-grid"><label class="field"><span>Language</span><select id="language"><option value="en">English</option><option value="hy">Հայերեն</option><option value="ru">Русский</option></select></label><label class="field"><span>Country</span><select id="country"><option value="AM">Armenia</option><option value="GE">Georgia</option><option value="AE">United Arab Emirates</option><option value="DE">Germany</option></select></label><label class="field"><span>Currency</span><select id="currency"><option value="AMD">AMD — Armenian dram</option><option value="USD">USD — US dollar</option><option value="EUR">EUR — Euro</option><option value="GEL">GEL — Georgian lari</option></select></label><label class="field"><span>Distance units</span><select id="distance-unit"><option value="km">Kilometres</option><option value="mi">Miles</option></select></label><label class="field"><span>Energy units</span><select id="energy-unit"><option value="kwh">kWh</option><option value="mwh">MWh</option></select></label><label class="field"><span>Time format</span><select id="time-format"><option value="24">24-hour</option><option value="12">12-hour</option></select></label></div><div class="settings-actions"><button class="button button--primary" type="submit">Save preferences</button></div></form>
+</section>
+<section class="settings-section" data-settings-panel="notifications">
+<header><div><h2>Notification preferences</h2><p>Choose which events should reach you and through which channel.</p></div></header>
+<div class="preference-list" id="notification-preferences"></div>
+<div class="settings-actions"><button class="button button--primary" id="save-notifications-button" type="button">Save notification settings</button></div>
+</section>
+<section class="settings-section" data-settings-panel="security">
+<header><div><h2>Security</h2><p>Protect access to your account and review active devices.</p></div><span class="status-pill status-pill--warning" id="security-score">Good</span></header>
+<div class="security-list"><article><div><span class="security-icon">⌾</span><div><strong>Two-factor authentication</strong><p>Require a verification code when signing in on a new device.</p></div></div><label class="switch"><input id="two-factor" type="checkbox"><span></span></label></article><article><div><span class="security-icon">◇</span><div><strong>Biometric unlock</strong><p>Use fingerprint or face recognition on supported devices.</p></div></div><label class="switch"><input id="biometric" type="checkbox"><span></span></label></article><article><div><span class="security-icon">▣</span><div><strong>RFID transaction confirmation</strong><p>Send an alert whenever your RFID card starts a session.</p></div></div><label class="switch"><input id="rfid-alert" type="checkbox"><span></span></label></article></div>
+<div class="security-grid"><section class="sub-card"><header><div><h3>Change password</h3><p>Use at least 8 characters.</p></div></header><form id="password-form"><label class="field"><span>Current password</span><input id="current-password" type="password" autocomplete="current-password"></label><label class="field"><span>New password</span><input id="new-password" type="password" autocomplete="new-password"></label><label class="field"><span>Confirm new password</span><input id="confirm-password" type="password" autocomplete="new-password"></label><button class="button button--secondary" type="submit">Update password</button><p class="form-message" id="password-message"></p></form></section><section class="sub-card"><header><div><h3>Active devices</h3><p>Sessions currently signed in.</p></div></header><div class="device-list" id="device-list"></div></section></div>
+</section>
+<section class="settings-section" data-settings-panel="privacy">
+<header><div><h2>Privacy & data</h2><p>Control analytics, location history and account data.</p></div></header>
+<div class="security-list"><article><div><span class="security-icon">⌖</span><div><strong>Location history</strong><p>Keep recently visited charging locations for recommendations.</p></div></div><label class="switch"><input id="location-history" type="checkbox"><span></span></label></article><article><div><span class="security-icon">↻</span><div><strong>Usage analytics</strong><p>Share anonymous app usage data to improve VoltDrive.</p></div></div><label class="switch"><input id="usage-analytics" type="checkbox"><span></span></label></article><article><div><span class="security-icon">◉</span><div><strong>Personalised recommendations</strong><p>Use charging history to suggest locations and charging times.</p></div></div><label class="switch"><input id="recommendations" type="checkbox"><span></span></label></article></div>
+<div class="privacy-actions"><button class="button button--secondary" id="download-data-button" type="button">Download my data</button><button class="danger-button" id="delete-account-button" type="button">Delete account</button></div>
+</section>
+</div>
+</div>
+</main>
+</div>
+</div>
+<div class="modal" id="delete-modal" aria-hidden="true"><div class="modal__backdrop" data-close-delete></div><section class="modal__panel danger-modal" role="dialog" aria-modal="true" aria-labelledby="delete-title"><button class="modal__close" data-close-delete type="button">×</button><span class="danger-symbol">!</span><h2 id="delete-title">Delete VoltDrive account?</h2><p>This will remove locally stored profile, vehicle, reservation, wallet and activity data from this prototype.</p><label class="field"><span>Type DELETE to confirm</span><input id="delete-confirmation" type="text" autocomplete="off"></label><div class="modal__actions"><button class="button button--secondary" data-close-delete type="button">Cancel</button><button class="danger-button" id="confirm-delete-button" type="button" disabled>Delete account</button></div></section></div>
+<div class="settings-toast" id="settings-toast" role="status"></div>
+<script type="module" src="./js/pages/settings.js"></script>
+<script type="module" src="./js/components/vehicle-selector.js"></script>
+</body>
+</html>

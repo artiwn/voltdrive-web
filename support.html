@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b0b0d"><meta name="mobile-web-app-capable" content="yes">
+<title>Support — VoltDrive</title>
+<link rel="stylesheet" href="./css/core/reset.css"><link rel="stylesheet" href="./css/core/variables.css"><link rel="stylesheet" href="./css/core/typography.css"><link rel="stylesheet" href="./css/components/buttons.css"><link rel="stylesheet" href="./css/components/forms.css"><link rel="stylesheet" href="./css/components/dashboard-cards.css"><link rel="stylesheet" href="./css/layout/app-layout.css"><link rel="stylesheet" href="./css/layout/sidebar.css"><link rel="stylesheet" href="./css/layout/header.css"><link rel="stylesheet" href="./css/pages/support.css">
+<link rel="stylesheet" href="./css/core/metallic-theme.css"></head>
+<body class="app-page">
+<div class="app-shell">
+<aside class="sidebar" id="sidebar">
+<a class="sidebar__brand" href="./dashboard.html"><span class="sidebar__mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 4.5 13h6L9 22l10.5-13h-6L13 2Z"/></svg></span><span>VoltDrive</span></a>
+<div class="sidebar__caption">Driver portal</div>
+<nav class="sidebar__nav" aria-label="Primary navigation">
+<a class="nav-link" href="./dashboard.html"><span class="nav-link__icon">⌂</span><span>Dashboard</span></a>
+<a class="nav-link" href="./map.html"><span class="nav-link__icon">⌖</span><span>Map & Stations</span></a><a class="nav-link" href="./route-planner.html"><span class="nav-link__icon">↝</span><span>Route planner</span></a>
+<a class="nav-link" href="./charging.html"><span class="nav-link__icon">ϟ</span><span>Charge</span></a><a class="nav-link" href="./smart-charging.html"><span class="nav-link__icon">◴</span><span>Smart charging</span></a>
+<a class="nav-link" href="./reservations.html"><span class="nav-link__icon">▣</span><span>Reservations</span><span class="nav-link__badge">1</span></a>
+<a class="nav-link" href="./activity.html"><span class="nav-link__icon">↻</span><span>Activity</span></a><a class="nav-link" href="./analytics.html"><span class="nav-link__icon">⌁</span><span>Analytics</span></a>
+<a class="nav-link" href="./vehicles.html"><span class="nav-link__icon">◇</span><span>Vehicles</span></a>
+<a class="nav-link" href="./wallet.html"><span class="nav-link__icon">▤</span><span>Wallet & Payments</span></a>
+<a class="nav-link" href="./subscriptions.html"><span class="nav-link__icon">✦</span><span>Plans & Packages</span></a>
+<a class="nav-link" href="./access-methods.html"><span class="nav-link__icon">⌁</span><span>Access methods</span></a>
+<a class="nav-link" href="./notifications.html"><span class="nav-link__icon">◉</span><span>Notifications</span><span class="nav-link__badge" id="sidebar-notification-count">3</span></a>
+<a class="nav-link is-active" href="./support.html"><span class="nav-link__icon">?</span><span>Support</span></a>
+<a class="nav-link" href="./account-security.html"><span class="nav-link__icon">⌾</span><span>Security & Privacy</span></a>
+<a class="nav-link" href="./settings.html"><span class="nav-link__icon">⚙</span><span>Settings</span></a><a class="nav-link" href="./demo-controls.html"><span class="nav-link__icon">◈</span><span>Demo controls</span></a>
+</nav>
+<div class="sidebar__footer"><div class="sidebar__user"><span class="sidebar__avatar" id="avatar">VD</span><span><strong id="sidebar-name">VoltDrive Driver</strong><span id="sidebar-email">driver@voltdrive.am</span></span></div><button class="nav-link" id="logout-button" type="button" style="width:100%;border:0;background:transparent;cursor:pointer"><span class="nav-link__icon">↪</span><span>Sign out</span></button></div>
+</aside>
+<div class="mobile-overlay" id="mobile-overlay"></div>
+<div class="app-main">
+<header class="app-header"><div class="header__left"><button class="header__menu" id="menu-toggle" type="button" aria-label="Open menu">☰</button><div class="header__title"><strong>Support</strong><span>Help, troubleshooting and service requests</span></div></div><div class="header__right"><label class="header-control vehicle-select" aria-label="Active vehicle"><span class="vehicle-select__icon" aria-hidden="true">◇</span><select id="vehicle-selector" aria-label="Active vehicle"></select></label><div class="header-control wallet-chip"><span>Wallet</span><strong id="header-wallet-balance">14,500 AMD</strong></div><a class="header-control header-icon" href="./notifications.html" aria-label="Notifications">◉<span class="header-icon__dot" id="header-notification-dot"></span></a></div></header>
+<main class="page-content support-page">
+<section class="support-hero"><div><span class="eyebrow">Help center</span><h1>How can we help?</h1><p>Search answers, report a charger problem or follow an existing support request.</p></div><button class="button button--primary" id="new-ticket-button" type="button">Create support request</button><label class="support-search"><span>⌕</span><input id="faq-search" type="search" placeholder="Search charging, payments, reservations…" autocomplete="off"></label></section>
+<section class="support-stats" aria-label="Support summary"><article><span class="support-stat-icon">✓</span><div><strong>24/7</strong><span>Emergency assistance</span></div></article><article><span class="support-stat-icon">◷</span><div><strong>&lt; 5 min</strong><span>Average first response</span></div></article><article><span class="support-stat-icon">▣</span><div><strong id="open-ticket-count">1</strong><span>Open requests</span></div></article><article><span class="support-stat-icon">★</span><div><strong>4.9/5</strong><span>Support rating</span></div></article></section>
+<section class="support-layout">
+<div class="support-main-column">
+<section class="support-card"><header class="support-card__header"><div><h2>Quick help</h2><p>Common actions for your current charging journey.</p></div></header><div class="quick-help-grid"><button type="button" data-quick-help="charger"><span>ϟ</span><strong>Charger problem</strong><small>Connector, cable or power issue</small></button><button type="button" data-quick-help="payment"><span>▤</span><strong>Payment issue</strong><small>Failed charge, refund or invoice</small></button><button type="button" data-quick-help="reservation"><span>▣</span><strong>Reservation help</strong><small>Modify, cancel or no-show</small></button><button type="button" data-quick-help="account"><span>◇</span><strong>Vehicle or account</strong><small>Profile, RFID or Plug & Charge</small></button></div></section>
+<section class="support-card"><header class="support-card__header"><div><h2>Frequently asked questions</h2><p id="faq-result-count">6 helpful articles</p></div><select id="faq-category" aria-label="FAQ category"><option value="all">All topics</option><option value="charging">Charging</option><option value="payment">Payments</option><option value="reservation">Reservations</option><option value="account">Account</option></select></header><div class="faq-list" id="faq-list"></div></section>
+</div>
+<aside class="support-side-column">
+<section class="support-card tickets-card"><header class="support-card__header"><div><h2>Your requests</h2><p>Recent support activity</p></div><button class="text-button" id="view-all-tickets" type="button">View all</button></header><div id="ticket-list" class="ticket-list"></div></section>
+<section class="emergency-card"><span class="emergency-card__icon">!</span><div><strong>Safety emergency?</strong><p>Stop charging, move away from the equipment and contact local emergency services when necessary.</p><button class="button button--secondary button--block" id="emergency-help" type="button">Emergency instructions</button></div></section>
+</aside>
+</section>
+<section style="margin:0 24px 24px;padding:18px;border:1px solid var(--border-color);background:var(--surface-1);border-radius:18px;display:flex;justify-content:space-between;align-items:center;gap:16px"><div><strong>Urgent charging or roadside problem?</strong><p style="margin:5px 0 0;color:var(--text-secondary)">Open the emergency assistance flow for safety guidance and case tracking.</p></div><a class="button button--primary" href="./emergency-assistance.html">Emergency assistance</a></section></main>
+</div>
+</div>
+<div class="support-modal" id="ticket-modal" aria-hidden="true"><div class="support-modal__backdrop" data-close-modal></div><section class="support-modal__panel" role="dialog" aria-modal="true" aria-labelledby="ticket-modal-title"><header><div><span class="eyebrow">New request</span><h2 id="ticket-modal-title">Contact VoltDrive Support</h2></div><button type="button" data-close-modal aria-label="Close">×</button></header><form id="ticket-form"><label class="form-field"><span>Issue type</span><select id="ticket-type" required><option value="charger">Charger or connector</option><option value="payment">Payment or refund</option><option value="reservation">Reservation</option><option value="account">Vehicle or account</option><option value="other">Other</option></select></label><label class="form-field"><span>Location</span><select id="ticket-location"><option value="Yerevan Mall EV Station">Yerevan Mall EV Station</option><option value="Republic Square Hub">Republic Square Hub</option><option value="Dalma Garden Station">Dalma Garden Station</option><option value="Not location-specific">Not location-specific</option></select></label><label class="form-field"><span>Subject</span><input id="ticket-subject" type="text" required maxlength="90" placeholder="Briefly describe the issue"></label><label class="form-field"><span>Description</span><textarea id="ticket-description" required rows="5" maxlength="700" placeholder="Tell us what happened and what you already tried"></textarea></label><label class="upload-zone"><input id="ticket-attachment" type="file" accept="image/*,.pdf"><span>＋</span><strong>Add photo or document</strong><small>PNG, JPG or PDF up to 10 MB</small></label><div class="form-message" id="ticket-form-message" role="alert"></div><div class="modal-actions"><button class="button button--secondary" type="button" data-close-modal>Cancel</button><button class="button button--primary" type="submit">Submit request</button></div></form></section></div>
+<div class="support-modal" id="ticket-detail-modal" aria-hidden="true"><div class="support-modal__backdrop" data-close-detail></div><section class="support-modal__panel support-modal__panel--detail" role="dialog" aria-modal="true"><header><div><span class="eyebrow">Support request</span><h2 id="detail-ticket-title">Ticket details</h2></div><button type="button" data-close-detail aria-label="Close">×</button></header><div id="ticket-detail-content"></div></section></div>
+<div class="support-toast" id="support-toast" role="status"></div>
+<script type="module" src="./js/pages/support.js"></script>
+<script type="module" src="./js/components/vehicle-selector.js"></script>
+</body>
+</html>

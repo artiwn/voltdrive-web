@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b0b0d"><meta name="mobile-web-app-capable" content="yes">
+<title>Notifications — VoltDrive</title>
+<link rel="stylesheet" href="./css/core/reset.css"><link rel="stylesheet" href="./css/core/variables.css"><link rel="stylesheet" href="./css/core/typography.css"><link rel="stylesheet" href="./css/components/buttons.css"><link rel="stylesheet" href="./css/components/forms.css"><link rel="stylesheet" href="./css/components/dashboard-cards.css"><link rel="stylesheet" href="./css/layout/app-layout.css"><link rel="stylesheet" href="./css/layout/sidebar.css"><link rel="stylesheet" href="./css/layout/header.css"><link rel="stylesheet" href="./css/pages/notifications.css">
+<link rel="stylesheet" href="./css/core/metallic-theme.css"></head>
+<body class="app-page">
+<div class="app-shell">
+<aside class="sidebar" id="sidebar">
+<a class="sidebar__brand" href="./dashboard.html"><span class="sidebar__mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 4.5 13h6L9 22l10.5-13h-6L13 2Z"/></svg></span><span>VoltDrive</span></a>
+<div class="sidebar__caption">Driver portal</div>
+<nav class="sidebar__nav" aria-label="Primary navigation">
+<a class="nav-link" href="./dashboard.html"><span class="nav-link__icon">⌂</span><span>Dashboard</span></a>
+<a class="nav-link" href="./map.html"><span class="nav-link__icon">⌖</span><span>Map & Stations</span></a><a class="nav-link" href="./route-planner.html"><span class="nav-link__icon">↝</span><span>Route planner</span></a>
+<a class="nav-link" href="./charging.html"><span class="nav-link__icon">ϟ</span><span>Charge</span></a><a class="nav-link" href="./smart-charging.html"><span class="nav-link__icon">◴</span><span>Smart charging</span></a>
+<a class="nav-link" href="./reservations.html"><span class="nav-link__icon">▣</span><span>Reservations</span><span class="nav-link__badge">1</span></a>
+<a class="nav-link" href="./activity.html"><span class="nav-link__icon">↻</span><span>Activity</span></a><a class="nav-link" href="./analytics.html"><span class="nav-link__icon">⌁</span><span>Analytics</span></a>
+<a class="nav-link" href="./vehicles.html"><span class="nav-link__icon">◇</span><span>Vehicles</span></a>
+<a class="nav-link" href="./wallet.html"><span class="nav-link__icon">▤</span><span>Wallet & Payments</span></a>
+<a class="nav-link" href="./subscriptions.html"><span class="nav-link__icon">✦</span><span>Plans & Packages</span></a>
+<a class="nav-link is-active" href="./notifications.html"><span class="nav-link__icon">◉</span><span>Notifications</span><span class="nav-link__badge" id="sidebar-notification-count">3</span></a>
+<a class="nav-link" href="./support.html"><span class="nav-link__icon">?</span><span>Support</span></a>
+<a class="nav-link" href="./emergency-assistance.html"><span class="nav-link__icon">!</span><span>Emergency assistance</span></a>
+<a class="nav-link" href="./account-security.html"><span class="nav-link__icon">⌾</span><span>Security & Privacy</span></a>
+<a class="nav-link" href="./settings.html"><span class="nav-link__icon">⚙</span><span>Settings</span></a><a class="nav-link" href="./demo-controls.html"><span class="nav-link__icon">◈</span><span>Demo controls</span></a>
+</nav>
+<div class="sidebar__footer"><div class="sidebar__user"><span class="sidebar__avatar" id="avatar">VD</span><span><strong id="sidebar-name">VoltDrive Driver</strong><span id="sidebar-email">driver@voltdrive.am</span></span></div><button class="nav-link" id="logout-button" type="button" style="width:100%;border:0;background:transparent;cursor:pointer"><span class="nav-link__icon">↪</span><span>Sign out</span></button></div>
+</aside>
+<div class="mobile-overlay" id="mobile-overlay"></div>
+<div class="app-main">
+<header class="app-header"><div class="header__left"><button class="header__menu" id="menu-toggle" type="button" aria-label="Open menu">☰</button><div class="header__title"><strong>Notifications</strong><span>Charging, reservations and account updates</span></div></div><div class="header__right"><label class="header-control vehicle-select" aria-label="Active vehicle"><span class="vehicle-select__icon" aria-hidden="true">◇</span><select id="vehicle-selector" aria-label="Active vehicle"></select></label><div class="header-control wallet-chip"><span>Wallet</span><strong id="header-wallet-balance">14,500 AMD</strong></div><a class="header-control header-icon" href="./notifications.html" aria-label="Notifications">◉<span class="header-icon__dot" id="header-notification-dot"></span></a></div></header>
+<main class="page-content notifications-page">
+<section class="notifications-heading"><div><span class="eyebrow">Notification center</span><h1>Stay informed</h1><p>Important charging, reservation, payment and station updates in one place.</p></div><div class="heading-actions"><button class="button button--secondary" id="notification-settings" type="button">Notification settings</button><button class="button button--primary" id="mark-all-read" type="button">Mark all as read</button></div></section>
+<section class="notification-summary" aria-label="Notification summary">
+<article><span class="summary-icon summary-icon--red">!</span><div><strong id="critical-count">1</strong><span>Critical</span></div></article>
+<article><span class="summary-icon summary-icon--blue">◉</span><div><strong id="unread-count">3</strong><span>Unread</span></div></article>
+<article><span class="summary-icon summary-icon--green">✓</span><div><strong id="completed-count">2</strong><span>Completed</span></div></article>
+<article><span class="summary-icon">▣</span><div><strong id="reservation-count">2</strong><span>Reservations</span></div></article>
+</section>
+<section class="notifications-layout">
+<aside class="notification-filters">
+<div class="filter-panel"><h2>Filters</h2><button class="notification-filter is-active" data-filter="all" type="button"><span>All notifications</span><strong id="filter-all-count">8</strong></button><button class="notification-filter" data-filter="unread" type="button"><span>Unread</span><strong id="filter-unread-count">3</strong></button><button class="notification-filter" data-filter="charging" type="button"><span>Charging</span><strong id="filter-charging-count">3</strong></button><button class="notification-filter" data-filter="reservation" type="button"><span>Reservations</span><strong id="filter-reservation-count">2</strong></button><button class="notification-filter" data-filter="payment" type="button"><span>Payments</span><strong id="filter-payment-count">2</strong></button><button class="notification-filter" data-filter="station" type="button"><span>Stations</span><strong id="filter-station-count">1</strong></button></div>
+<div class="preference-note"><span>◉</span><div><strong>Smart alerts enabled</strong><p>Critical updates are always delivered immediately.</p></div></div>
+</aside>
+<section class="notification-feed"><header class="feed-toolbar"><div><h2 id="feed-title">All notifications</h2><span id="feed-subtitle">8 updates</span></div><select id="notification-sort" aria-label="Sort notifications"><option value="newest">Newest first</option><option value="oldest">Oldest first</option><option value="priority">Priority first</option></select></header><div id="notification-list" class="notification-list"></div></section>
+</section>
+</main>
+</div>
+</div>
+<div class="notification-toast" id="notification-toast" role="status"></div>
+<script type="module" src="./js/pages/notifications.js"></script>
+<script type="module" src="./js/components/vehicle-selector.js"></script>
+</body>
+</html>

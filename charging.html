@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b0b0d"><meta name="mobile-web-app-capable" content="yes">
+<title>Charging — VoltDrive</title>
+<link rel="stylesheet" href="./css/core/reset.css"><link rel="stylesheet" href="./css/core/variables.css"><link rel="stylesheet" href="./css/core/typography.css"><link rel="stylesheet" href="./css/components/buttons.css"><link rel="stylesheet" href="./css/components/forms.css"><link rel="stylesheet" href="./css/layout/app-layout.css"><link rel="stylesheet" href="./css/layout/sidebar.css"><link rel="stylesheet" href="./css/layout/header.css"><link rel="stylesheet" href="./css/pages/charging.css">
+<link rel="stylesheet" href="./css/core/metallic-theme.css"></head>
+<body class="app-page">
+<div class="app-shell">
+<aside class="sidebar" id="sidebar">
+<a class="sidebar__brand" href="./dashboard.html"><span class="sidebar__mark">ϟ</span><span>VoltDrive</span></a>
+<div class="sidebar__caption">Driver portal</div>
+<nav class="sidebar__nav" aria-label="Primary navigation">
+<a class="nav-link" href="./dashboard.html"><span class="nav-link__icon">⌂</span><span>Dashboard</span></a>
+<a class="nav-link" href="./map.html"><span class="nav-link__icon">⌖</span><span>Map & Stations</span></a><a class="nav-link" href="./route-planner.html"><span class="nav-link__icon">↝</span><span>Route planner</span></a>
+<a class="nav-link is-active" href="./charging.html"><span class="nav-link__icon">ϟ</span><span>Charge</span></a>
+<a class="nav-link" href="./reservations.html"><span class="nav-link__icon">▣</span><span>Reservations</span><span class="nav-link__badge">1</span></a>
+<a class="nav-link" href="./activity.html"><span class="nav-link__icon">↻</span><span>Activity</span></a><a class="nav-link" href="./analytics.html"><span class="nav-link__icon">⌁</span><span>Analytics</span></a>
+<a class="nav-link" href="./vehicles.html"><span class="nav-link__icon">◇</span><span>Vehicles</span></a>
+<a class="nav-link" href="./wallet.html"><span class="nav-link__icon">▤</span><span>Wallet & Payments</span></a>
+<a class="nav-link" href="./subscriptions.html"><span class="nav-link__icon">✦</span><span>Plans & Packages</span></a>
+<a class="nav-link" href="./access-methods.html"><span class="nav-link__icon">⌁</span><span>Access methods</span></a>
+<a class="nav-link" href="./notifications.html"><span class="nav-link__icon">◉</span><span>Notifications</span><span class="nav-link__badge">3</span></a>
+<a class="nav-link" href="./support.html"><span class="nav-link__icon">?</span><span>Support</span></a>
+<a class="nav-link" href="./emergency-assistance.html"><span class="nav-link__icon">!</span><span>Emergency assistance</span></a>
+<a class="nav-link" href="./account-security.html"><span class="nav-link__icon">⌾</span><span>Security & Privacy</span></a>
+<a class="nav-link" href="./settings.html"><span class="nav-link__icon">⚙</span><span>Settings</span></a><a class="nav-link" href="./demo-controls.html"><span class="nav-link__icon">◈</span><span>Demo controls</span></a>
+</nav>
+<div class="sidebar__footer"><div class="sidebar__user"><span class="sidebar__avatar" id="avatar">VD</span><span><strong id="sidebar-name">VoltDrive Driver</strong><span id="sidebar-email">driver@voltdrive.am</span></span></div><button class="nav-link" id="logout-button" type="button" style="width:100%;border:0;background:transparent;cursor:pointer"><span class="nav-link__icon">↪</span><span>Sign out</span></button></div>
+</aside>
+<div class="mobile-overlay" id="mobile-overlay"></div>
+<div class="app-main">
+<header class="app-header"><div class="header__left"><button class="header__menu" id="menu-toggle" type="button" aria-label="Open menu">☰</button><div class="header__title"><strong>Charging</strong><span>Start and manage your session</span></div></div><div class="header__right"><label class="header-control vehicle-select" aria-label="Active vehicle"><span class="vehicle-select__icon" aria-hidden="true">◇</span><select id="vehicle-selector" aria-label="Active vehicle"></select></label></div></header>
+<main class="page-content charging-page">
+<section class="charging-intro"><div><span class="eyebrow">Charging flow</span><h1 id="charging-title">Start a new charging session</h1><p id="charging-subtitle">Enter the charger code or select a station, then review the tariff before starting.</p></div><div class="charging-intro__actions"><button class="button button--secondary button--compact" id="demo-errors-button" type="button">Preview error states</button><span class="charging-status-pill" id="charging-status-pill">Ready</span></div></section>
+<div class="charging-progress" id="charging-progress"><span class="is-active"></span><span></span><span></span><span></span></div>
+<section class="charging-shell">
+<div class="charging-main-card">
+<div class="charging-step is-active" data-step="1">
+<div class="step-heading"><span>01</span><div><h2>Identify the charger</h2><p>Use the charger code shown on the device or select a nearby location.</p></div></div>
+<div class="charger-entry-grid">
+<label class="charger-code-card"><span>Charger code</span><input id="charger-code" maxlength="8" value="C-101" aria-label="Charger code"><small>Example: C-101</small></label>
+<button class="scan-card" id="scan-button" type="button"><span class="scan-icon">⌗</span><strong>Scan QR code</strong><small>Use your camera to identify the charger</small></button>
+</div>
+<div class="field-group"><label for="location-select">Charging location</label><select id="location-select"><option value="yerevan-mall">Yerevan Mall EV Station</option><option value="republic-square">Republic Square Charge Hub</option><option value="dalma">Dalma Garden Station</option></select></div>
+</div>
+<div class="charging-step" data-step="2">
+<div class="step-heading"><span>02</span><div><h2>Select connector</h2><p>Choose an available connector compatible with your vehicle.</p></div></div>
+<div class="connector-grid" id="connector-grid"></div>
+</div>
+<div class="charging-step" data-step="3">
+<div class="step-heading"><span>03</span><div><h2>Review and authorize</h2><p>Confirm the tariff and payment preauthorization before charging starts.</p></div></div>
+<div class="review-grid"><div><span>Location</span><strong id="review-location">—</strong></div><div><span>Charger</span><strong id="review-charger">—</strong></div><div><span>Connector</span><strong id="review-connector">—</strong></div><div><span>Energy tariff</span><strong id="review-price">—</strong></div><div><span>Preauthorization</span><strong>3,000 AMD</strong></div><div><span>Payment method</span><strong>Visa •••• 4242</strong></div></div>
+<label class="checkbox authorization-check"><input id="authorization-check" type="checkbox" checked><span>I authorize VoltDrive to reserve 3,000 AMD and charge the final session amount.</span></label>
+</div>
+<div class="charging-step" data-step="4">
+<div class="connecting-state" id="connecting-state"><span class="connecting-ring">ϟ</span><h2>Connecting to charger</h2><p>Authorizing your vehicle and preparing the connector.</p></div>
+<div class="active-session" id="active-session" hidden>
+<div class="session-hero"><div><span class="eyebrow">Charging in progress</span><strong class="battery-value" id="battery-value">42%</strong><span id="session-location">Yerevan Mall EV Station</span></div><div class="session-power"><strong id="power-value">87 kW</strong><span>Current power</span></div></div>
+<div class="battery-track"><span id="battery-track"></span></div>
+<div class="session-stats"><div><span>Energy delivered</span><strong id="energy-value">0.0 kWh</strong></div><div><span>Session cost</span><strong id="cost-value">0 AMD</strong></div><div><span>Duration</span><strong id="duration-value">00:00</strong></div><div><span>Estimated completion</span><strong id="completion-value">34 min</strong></div></div>
+<div class="session-controls"><label><span>Charge limit</span><select id="charge-limit"><option value="70">70%</option><option value="80" selected>80%</option><option value="90">90%</option><option value="100">100%</option></select></label><label><span>Charging speed</span><select id="charging-speed"><option value="1">Maximum</option><option value="0.75">Balanced</option><option value="0.5">Reduced</option></select></label></div>
+<div class="session-actions"><button class="button button--secondary" id="simulate-interruption-button" type="button">Simulate interruption</button><button class="button button--secondary" id="support-button" type="button">Contact support</button><button class="button button--danger" id="stop-button" type="button">Stop charging</button></div>
+</div>
+</div>
+<div class="charging-actions" id="charging-actions"><button class="button button--secondary" id="previous-button" type="button" hidden>Back</button><span class="form-error" id="form-error"></span><button class="button button--primary" id="next-button" type="button">Continue</button></div>
+</div>
+<aside class="charging-summary"><span class="summary-label">Session preview</span><h3 id="summary-location">Yerevan Mall EV Station</h3><p id="summary-address">34 Arshakunyats Avenue</p><div class="summary-list"><div><span>Vehicle</span><strong id="summary-vehicle">Tesla Model Y</strong></div><div><span>Connector</span><strong id="summary-connector">CCS2</strong></div><div><span>Target</span><strong id="summary-target">80%</strong></div><div><span>Price</span><strong id="summary-price">120 AMD/kWh</strong></div></div><div class="summary-note"><strong>Before charging</strong><span>Connect the cable securely and ensure the charger display is ready.</span></div></aside>
+</section>
+<section class="charging-complete" id="charging-complete" hidden><div class="complete-icon">✓</div><span class="eyebrow">Charging completed</span><h1>Your session is complete.</h1><p>The final meter value was received and payment was completed successfully.</p><div class="complete-grid"><div><span>Energy delivered</span><strong id="complete-energy">—</strong></div><div><span>Duration</span><strong id="complete-duration">—</strong></div><div><span>Final battery</span><strong id="complete-battery">—</strong></div><div><span>Total paid</span><strong id="complete-cost">—</strong></div></div><div class="complete-actions"><a class="button button--primary" href="./parking.html">Continue to parking</a><a class="button button--secondary" href="./dashboard.html">Go to Dashboard</a><button class="button button--secondary" id="receipt-button" type="button">View receipt</button><button class="button button--secondary" id="new-session-button" type="button">Start another session</button></div></section>
+
+<section class="charging-error-state" id="charging-error-state" hidden>
+  <div class="error-state__icon" id="error-state-icon">!</div>
+  <span class="eyebrow">Charging issue</span>
+  <h1 id="error-state-title">Unable to start charging</h1>
+  <p id="error-state-message">The charger could not complete the requested operation.</p>
+  <div class="error-state__details" id="error-state-details"></div>
+  <div class="error-state__actions">
+    <button class="button button--primary" id="error-retry-button" type="button">Try again</button>
+    <a class="button button--secondary" id="error-alternative-button" href="./map.html">Find another charger</a>
+    <a class="button button--secondary" href="./support.html">Contact support</a>
+    <button class="button button--secondary" id="error-close-button" type="button">Back to charging</button>
+  </div>
+</section>
+</main>
+</div></div>
+<div class="charging-toast" id="charging-toast" role="status"></div>
+<div class="charging-demo-modal" id="charging-demo-modal" hidden>
+  <button class="charging-demo-modal__backdrop" type="button" data-close-demo aria-label="Close"></button>
+  <section class="charging-demo-modal__panel" role="dialog" aria-modal="true" aria-labelledby="demo-errors-title">
+    <header><div><span class="eyebrow">Prototype controls</span><h2 id="demo-errors-title">Preview charging error states</h2></div><button class="modal-close" type="button" data-close-demo aria-label="Close">×</button></header>
+    <p>Select a state to show how the driver can recover without a real charger or payment API.</p>
+    <div class="error-scenario-grid">
+      <button type="button" data-error-scenario="offline"><span>Offline</span><strong>Charger unavailable</strong></button>
+      <button type="button" data-error-scenario="incompatible"><span>Compatibility</span><strong>Connector not supported</strong></button>
+      <button type="button" data-error-scenario="payment"><span>Payment</span><strong>Preauthorization failed</strong></button>
+      <button type="button" data-error-scenario="connection"><span>Connection</span><strong>Communication lost</strong></button>
+      <button type="button" data-error-scenario="cable"><span>Hardware</span><strong>Cable remains locked</strong></button>
+      <button type="button" data-error-scenario="interrupted"><span>Session</span><strong>Charging interrupted</strong></button>
+      <button type="button" data-error-scenario="meter"><span>Settlement</span><strong>Final meter pending</strong></button>
+    </div>
+  </section>
+</div>
+
+<script type="module" src="./js/pages/charging.js"></script>
+<script type="module" src="./js/components/vehicle-selector.js"></script>
+</body></html>

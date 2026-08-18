@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b0b0d"><meta name="mobile-web-app-capable" content="yes">
+<title>Emergency assistance — VoltDrive</title>
+<link rel="stylesheet" href="./css/core/reset.css"><link rel="stylesheet" href="./css/core/variables.css"><link rel="stylesheet" href="./css/core/typography.css"><link rel="stylesheet" href="./css/components/buttons.css"><link rel="stylesheet" href="./css/components/dashboard-cards.css"><link rel="stylesheet" href="./css/layout/app-layout.css"><link rel="stylesheet" href="./css/layout/sidebar.css"><link rel="stylesheet" href="./css/layout/header.css"><link rel="stylesheet" href="./css/pages/emergency-assistance.css">
+<link rel="stylesheet" href="./css/core/metallic-theme.css"></head>
+<body class="app-page">
+<div class="app-shell">
+<aside class="sidebar" id="sidebar">
+<a class="sidebar__brand" href="./dashboard.html"><span class="sidebar__mark">ϟ</span><span>VoltDrive</span></a>
+<div class="sidebar__caption">Driver portal</div>
+<nav class="sidebar__nav" aria-label="Primary navigation">
+<a class="nav-link" href="./dashboard.html"><span class="nav-link__icon">⌂</span><span>Dashboard</span></a>
+<a class="nav-link" href="./map.html"><span class="nav-link__icon">⌖</span><span>Map & Stations</span></a><a class="nav-link" href="./route-planner.html"><span class="nav-link__icon">↝</span><span>Route planner</span></a>
+<a class="nav-link" href="./charging.html"><span class="nav-link__icon">ϟ</span><span>Charge</span></a><a class="nav-link" href="./smart-charging.html"><span class="nav-link__icon">◴</span><span>Smart charging</span></a>
+<a class="nav-link" href="./reservations.html"><span class="nav-link__icon">▣</span><span>Reservations</span><span class="nav-link__badge">1</span></a>
+<a class="nav-link" href="./activity.html"><span class="nav-link__icon">↻</span><span>Activity</span></a><a class="nav-link" href="./analytics.html"><span class="nav-link__icon">⌁</span><span>Analytics</span></a>
+<a class="nav-link" href="./vehicles.html"><span class="nav-link__icon">◇</span><span>Vehicles</span></a>
+<a class="nav-link" href="./wallet.html"><span class="nav-link__icon">▤</span><span>Wallet & Payments</span></a>
+<a class="nav-link" href="./subscriptions.html"><span class="nav-link__icon">✦</span><span>Plans & Packages</span></a>
+<a class="nav-link" href="./access-methods.html"><span class="nav-link__icon">⌁</span><span>Access methods</span></a>
+<a class="nav-link" href="./notifications.html"><span class="nav-link__icon">◉</span><span>Notifications</span><span class="nav-link__badge">3</span></a>
+<a class="nav-link" href="./support.html"><span class="nav-link__icon">?</span><span>Support</span></a>
+<a class="nav-link is-active" href="./emergency-assistance.html"><span class="nav-link__icon">!</span><span>Emergency assistance</span></a>
+<a class="nav-link" href="./account-security.html"><span class="nav-link__icon">⌾</span><span>Security & Privacy</span></a>
+<a class="nav-link" href="./settings.html"><span class="nav-link__icon">⚙</span><span>Settings</span></a><a class="nav-link" href="./demo-controls.html"><span class="nav-link__icon">◈</span><span>Demo controls</span></a>
+</nav>
+<div class="sidebar__footer"><div class="sidebar__user"><span class="sidebar__avatar" id="avatar">VD</span><span><strong id="sidebar-name">VoltDrive Driver</strong><span id="sidebar-email">driver@voltdrive.am</span></span></div><button class="nav-link" id="logout-button" type="button" style="width:100%;border:0;background:transparent;cursor:pointer"><span class="nav-link__icon">↪</span><span>Sign out</span></button></div>
+</aside>
+<div class="mobile-overlay" id="mobile-overlay"></div>
+<div class="app-main">
+<header class="app-header"><div class="header__left"><button class="header__menu" id="menu-toggle" type="button" aria-label="Open menu">☰</button><div class="header__title"><strong>Emergency assistance</strong><span>Get help with charging, safety and roadside issues</span></div></div><div class="header__right"><label class="header-control vehicle-select" aria-label="Active vehicle"><span class="vehicle-select__icon">◇</span><select id="vehicle-selector" aria-label="Active vehicle"></select></label><a class="header-control header-icon" href="./notifications.html" aria-label="Notifications">◉<span class="header-icon__dot"></span></a></div></header>
+<main class="page-content emergency-page">
+<section class="emergency-hero">
+<div><span class="eyebrow">24/7 driver assistance</span><h1>What do you need help with?</h1><p>Choose a situation to see immediate safety steps and create a demo assistance request.</p></div>
+<div class="safety-banner"><span>!</span><div><strong>Immediate danger?</strong><p>Move away from the vehicle and charger. Contact local emergency services first.</p></div></div>
+</section>
+<section class="incident-grid" id="incident-grid">
+<button class="incident-card is-selected" type="button" data-incident="cable"><span class="incident-icon">⌁</span><strong>Cable is stuck</strong><small>Connector will not release</small></button>
+<button class="incident-card" type="button" data-incident="charger"><span class="incident-icon">ϟ</span><strong>Charger fault</strong><small>Smoke, sparks or unusual noise</small></button>
+<button class="incident-card" type="button" data-incident="vehicle"><span class="incident-icon">◇</span><strong>Vehicle cannot move</strong><small>Battery or drivetrain issue</small></button>
+<button class="incident-card" type="button" data-incident="tow"><span class="incident-icon">↝</span><strong>Request tow</strong><small>Roadside recovery required</small></button>
+<button class="incident-card" type="button" data-incident="blocked"><span class="incident-icon">▣</span><strong>Blocked charging bay</strong><small>Bay occupied or inaccessible</small></button>
+<button class="incident-card" type="button" data-incident="other"><span class="incident-icon">?</span><strong>Other urgent issue</strong><small>Describe a different problem</small></button>
+</section>
+<div class="emergency-layout">
+<section class="assistance-card">
+<div class="section-heading"><div><span class="eyebrow">Immediate guidance</span><h2 id="guidance-title">Release a stuck cable safely</h2></div><span class="status-pill">Step-by-step</span></div>
+<ol class="guidance-list" id="guidance-list"></ol>
+<div class="quick-actions">
+<button class="button button--secondary" id="share-location" type="button">Share current location</button>
+<a class="button button--secondary" href="./charging.html">Open charging session</a>
+<a class="button button--secondary" href="./support.html">Open support center</a>
+</div>
+</section>
+<section class="request-card">
+<span class="eyebrow">Assistance request</span><h2>Create a demo case</h2>
+<label for="station-select">Current location</label><select id="station-select"><option>Yerevan Mall EV Station</option><option>Republic Square Charge Hub</option><option>Dalma Garden EV Point</option><option>Roadside / Other location</option></select>
+<label for="asset-select">Charger or bay</label><select id="asset-select"><option>Charger A01 · Bay P1-04</option><option>Charger A02 · Bay P1-05</option><option>Charger B03 · Bay P1-08</option><option>Not applicable</option></select>
+<label for="phone-input">Callback number</label><input id="phone-input" type="tel" value="+374 77 123 456">
+<label for="details-input">What happened?</label><textarea id="details-input" rows="4" placeholder="Add details for the assistance team..."></textarea>
+<label class="consent-row"><input id="location-consent" type="checkbox" checked><span>Include my approximate location and active vehicle details</span></label>
+<button class="button button--primary button--block" id="request-help" type="button">Request assistance</button>
+<button class="button button--secondary button--block" id="preview-call" type="button">Preview emergency call</button>
+<p class="request-note">This prototype does not place real calls or send real location data.</p>
+</section>
+</div>
+<section class="cases-section">
+<div class="section-heading"><div><span class="eyebrow">Tracking</span><h2>Assistance cases</h2></div><button class="button button--secondary" id="preview-update" type="button">Preview status update</button></div>
+<div class="case-list" id="case-list"></div>
+</section>
+</main>
+</div></div>
+<div class="emergency-modal" id="call-modal" aria-hidden="true"><div class="emergency-modal__card"><button class="modal-close" id="close-call" type="button">×</button><span class="call-pulse">☎</span><h2>Calling VoltDrive assistance</h2><p>This is a visual preview. No real call is being placed.</p><strong>00:08</strong><button class="button button--danger button--block" id="end-call" type="button">End preview</button></div></div>
+<div class="location-toast" id="emergency-toast" role="status"></div>
+<script type="module" src="./js/pages/emergency-assistance.js"></script>
+<script type="module" src="./js/components/vehicle-selector.js"></script>
+</body></html>

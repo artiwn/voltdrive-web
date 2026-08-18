@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b0b0d"><meta name="mobile-web-app-capable" content="yes">
+<title>Smart Charging — VoltDrive</title>
+<link rel="stylesheet" href="./css/core/reset.css"><link rel="stylesheet" href="./css/core/variables.css"><link rel="stylesheet" href="./css/core/typography.css"><link rel="stylesheet" href="./css/components/buttons.css"><link rel="stylesheet" href="./css/components/forms.css"><link rel="stylesheet" href="./css/components/dashboard-cards.css"><link rel="stylesheet" href="./css/layout/app-layout.css"><link rel="stylesheet" href="./css/layout/sidebar.css"><link rel="stylesheet" href="./css/layout/header.css"><link rel="stylesheet" href="./css/pages/smart-charging.css">
+<link rel="stylesheet" href="./css/core/metallic-theme.css"></head>
+<body class="app-page">
+<div class="app-shell">
+<aside class="sidebar" id="sidebar">
+<a class="sidebar__brand" href="./dashboard.html"><span class="sidebar__mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 4.5 13h6L9 22l10.5-13h-6L13 2Z"/></svg></span><span>VoltDrive</span></a>
+<div class="sidebar__caption">Driver portal</div>
+<nav class="sidebar__nav" aria-label="Primary navigation">
+<a class="nav-link" href="./dashboard.html"><span class="nav-link__icon">⌂</span><span>Dashboard</span></a>
+<a class="nav-link" href="./map.html"><span class="nav-link__icon">⌖</span><span>Map & Stations</span></a><a class="nav-link" href="./route-planner.html"><span class="nav-link__icon">↝</span><span>Route planner</span></a>
+<a class="nav-link" href="./charging.html"><span class="nav-link__icon">ϟ</span><span>Charge</span></a><a class="nav-link is-active" href="./smart-charging.html"><span class="nav-link__icon">◴</span><span>Smart charging</span></a>
+<a class="nav-link" href="./reservations.html"><span class="nav-link__icon">▣</span><span>Reservations</span><span class="nav-link__badge">1</span></a>
+<a class="nav-link" href="./activity.html"><span class="nav-link__icon">↻</span><span>Activity</span></a><a class="nav-link" href="./analytics.html"><span class="nav-link__icon">⌁</span><span>Analytics</span></a>
+<a class="nav-link" href="./vehicles.html"><span class="nav-link__icon">◇</span><span>Vehicles</span></a>
+<a class="nav-link" href="./wallet.html"><span class="nav-link__icon">▤</span><span>Wallet & Payments</span></a>
+<a class="nav-link" href="./subscriptions.html"><span class="nav-link__icon">✦</span><span>Plans & Packages</span></a>
+<a class="nav-link" href="./access-methods.html"><span class="nav-link__icon">⌁</span><span>Access methods</span></a>
+<a class="nav-link" href="./notifications.html"><span class="nav-link__icon">◉</span><span>Notifications</span><span class="nav-link__badge" id="sidebar-notification-count">3</span></a>
+<a class="nav-link" href="./support.html"><span class="nav-link__icon">?</span><span>Support</span></a>
+<a class="nav-link" href="./emergency-assistance.html"><span class="nav-link__icon">!</span><span>Emergency assistance</span></a>
+<a class="nav-link" href="./account-security.html"><span class="nav-link__icon">⌾</span><span>Security & Privacy</span></a>
+<a class="nav-link" href="./settings.html"><span class="nav-link__icon">⚙</span><span>Settings</span></a><a class="nav-link" href="./demo-controls.html"><span class="nav-link__icon">◈</span><span>Demo controls</span></a>
+</nav>
+<div class="sidebar__footer"><div class="sidebar__user"><span class="sidebar__avatar" id="avatar">VD</span><span><strong id="sidebar-name">VoltDrive Driver</strong><span id="sidebar-email">driver@voltdrive.am</span></span></div><button class="nav-link" id="logout-button" type="button" style="width:100%;border:0;background:transparent;cursor:pointer"><span class="nav-link__icon">↪</span><span>Sign out</span></button></div>
+</aside>
+<div class="mobile-overlay" id="mobile-overlay"></div>
+<div class="app-main">
+<header class="app-header"><div class="header__left"><button class="header__menu" id="menu-toggle" type="button" aria-label="Open menu">☰</button><div class="header__title"><strong>Smart Charging</strong><span>Charge at the right time, price and battery level</span></div></div><div class="header__right"><label class="header-control vehicle-select" aria-label="Active vehicle"><span class="vehicle-select__icon" aria-hidden="true">◇</span><select id="vehicle-selector" aria-label="Active vehicle"></select></label><div class="header-control wallet-chip"><span>Wallet</span><strong id="header-wallet-balance">14,500 AMD</strong></div><a class="header-control header-icon" href="./notifications.html" aria-label="Notifications">◉<span class="header-icon__dot" id="header-notification-dot"></span></a></div></header>
+<main class="page-content smart-page">
+<section class="smart-hero"><div><span class="eyebrow">Charging automation</span><h1>Smart charging preferences</h1><p>Prepare your vehicle for departure while prioritizing lower prices, off-peak hours and cleaner energy.</p></div><div class="smart-status" id="smart-status"><span class="smart-status__dot"></span><div><strong>Automation enabled</strong><small>Next plan will run automatically</small></div></div></section>
+<section class="smart-summary" id="smart-summary"></section>
+<div class="smart-layout">
+<section class="smart-panel smart-panel--wide"><header><div><span class="panel-icon">◴</span><div><h2>Charging schedule</h2><p>Set when the vehicle should be ready and which days this rule applies.</p></div></div><label class="switch"><input type="checkbox" id="automation-enabled"><span></span></label></header>
+<div class="schedule-grid"><label class="field"><span>Ready by</span><input id="departure-time" type="time"></label><label class="field"><span>Start no earlier than</span><input id="start-time" type="time"></label><label class="field"><span>Charging location</span><select id="charging-location"><option value="any">Any compatible station</option><option value="home">Home charger</option><option value="public">Public chargers only</option><option value="work">Workplace charger</option></select></label></div>
+<div class="weekday-picker" id="weekday-picker" aria-label="Schedule days"></div></section>
+<section class="smart-panel"><header><div><span class="panel-icon">◇</span><div><h2>Battery target</h2><p>Choose the desired state of charge for regular use.</p></div></div></header><div class="target-value"><strong id="target-output">80%</strong><span id="range-output">Approx. 410 km range</span></div><input class="range-control" id="target-charge" type="range" min="50" max="100" step="5"><div class="range-labels"><span>50%</span><span>Daily</span><span>100%</span></div><label class="check-row"><input type="checkbox" id="trip-mode"><span><strong>Trip mode</strong><small>Charge to 100% for the next planned trip only.</small></span></label></section>
+<section class="smart-panel"><header><div><span class="panel-icon">▤</span><div><h2>Price preferences</h2><p>Delay charging when the estimated energy price is above your limit.</p></div></div></header><label class="field"><span>Maximum energy price</span><div class="input-suffix"><input id="price-cap" type="number" min="40" max="300" step="5"><em>AMD/kWh</em></div></label><label class="check-row"><input type="checkbox" id="off-peak"><span><strong>Prefer off-peak hours</strong><small>Prioritize quieter periods when sufficient time remains.</small></span></label><label class="check-row"><input type="checkbox" id="allow-override"><span><strong>Allow urgent override</strong><small>Ignore the price cap if required to reach the target by departure.</small></span></label></section>
+<section class="smart-panel"><header><div><span class="panel-icon">♧</span><div><h2>Energy preferences</h2><p>Choose how strongly the plan should prioritize renewable energy.</p></div></div></header><div class="choice-cards" id="energy-choice"><button type="button" data-energy="fast"><strong>Fastest</strong><small>Finish as soon as possible</small></button><button type="button" data-energy="balanced"><strong>Balanced</strong><small>Mix speed, price and carbon</small></button><button type="button" data-energy="green"><strong>Greenest</strong><small>Prefer renewable availability</small></button></div><label class="check-row"><input type="checkbox" id="carbon-summary"><span><strong>Carbon summary</strong><small>Show estimated CO₂ impact after each session.</small></span></label></section>
+<section class="smart-panel smart-panel--wide"><header><div><span class="panel-icon">ϟ</span><div><h2>Plan preview</h2><p>Demonstration timeline generated from the current preferences.</p></div></div><button class="button button--secondary button--compact" id="recalculate" type="button">Recalculate</button></header><div class="plan-preview" id="plan-preview"></div><div class="smart-actions"><button class="button button--primary" id="save-plan" type="button">Save smart charging plan</button><button class="button button--secondary" id="simulate-plan" type="button">Simulate tonight</button><a class="button button--secondary" href="./charging.html">Open Charge</a></div></section>
+<section class="smart-panel smart-panel--wide"><header><div><span class="panel-icon">↻</span><div><h2>Saved rules</h2><p>Reusable charging routines for different days and locations.</p></div></div><button class="button button--secondary button--compact" id="add-rule" type="button">Add rule</button></header><div class="rules-list" id="rules-list"></div></section>
+</div>
+</main>
+</div></div>
+<div class="smart-toast" id="smart-toast" role="status"></div>
+<script type="module" src="./js/pages/smart-charging.js"></script><script type="module" src="./js/components/vehicle-selector.js"></script>
+</body></html>

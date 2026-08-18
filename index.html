@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b0b0d">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <title>VoltDrive</title>
+  <meta http-equiv="refresh" content="0; url=./login.html">
+  <script>
+    // Remove service workers and caches left by older prototype builds.
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistrations()
+        .then(registrations => Promise.all(registrations.map(registration => registration.unregister())))
+        .catch(() => {});
+    }
+    if ('caches' in window) {
+      caches.keys()
+        .then(keys => Promise.all(keys.filter(key => key.startsWith('voltdrive-')).map(key => caches.delete(key))))
+        .catch(() => {});
+    }
+    window.location.replace('./login.html');
+  </script>
+</head>
+<body>
+  <p>Opening VoltDrive… <a href="./login.html">Continue to sign in</a></p>
+</body>
+</html>

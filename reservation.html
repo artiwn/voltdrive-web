@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b0b0d"><meta name="mobile-web-app-capable" content="yes">
+<title>Reserve charging — VoltDrive</title>
+<link rel="stylesheet" href="./css/core/reset.css"><link rel="stylesheet" href="./css/core/variables.css"><link rel="stylesheet" href="./css/core/typography.css"><link rel="stylesheet" href="./css/components/buttons.css"><link rel="stylesheet" href="./css/components/forms.css"><link rel="stylesheet" href="./css/layout/app-layout.css"><link rel="stylesheet" href="./css/layout/sidebar.css"><link rel="stylesheet" href="./css/layout/header.css"><link rel="stylesheet" href="./css/pages/reservation.css">
+<link rel="stylesheet" href="./css/core/metallic-theme.css"></head>
+<body class="app-page">
+<div class="app-shell">
+<aside class="sidebar" id="sidebar">
+<a class="sidebar__brand" href="./dashboard.html"><span class="sidebar__mark">ϟ</span><span>VoltDrive</span></a>
+<div class="sidebar__caption">Driver portal</div>
+<nav class="sidebar__nav" aria-label="Primary navigation">
+<a class="nav-link" href="./dashboard.html"><span class="nav-link__icon">⌂</span><span>Dashboard</span></a>
+<a class="nav-link" href="./map.html"><span class="nav-link__icon">⌖</span><span>Map & Stations</span></a><a class="nav-link" href="./route-planner.html"><span class="nav-link__icon">↝</span><span>Route planner</span></a>
+<a class="nav-link" href="./charging.html"><span class="nav-link__icon">ϟ</span><span>Charge</span></a><a class="nav-link" href="./smart-charging.html"><span class="nav-link__icon">◴</span><span>Smart charging</span></a>
+<a class="nav-link is-active" href="./reservations.html"><span class="nav-link__icon">▣</span><span>Reservations</span><span class="nav-link__badge">1</span></a>
+<a class="nav-link" href="./activity.html"><span class="nav-link__icon">↻</span><span>Activity</span></a><a class="nav-link" href="./analytics.html"><span class="nav-link__icon">⌁</span><span>Analytics</span></a>
+<a class="nav-link" href="./vehicles.html"><span class="nav-link__icon">◇</span><span>Vehicles</span></a>
+<a class="nav-link" href="./wallet.html"><span class="nav-link__icon">▤</span><span>Wallet & Payments</span></a>
+<a class="nav-link" href="./subscriptions.html"><span class="nav-link__icon">✦</span><span>Plans & Packages</span></a>
+<a class="nav-link" href="./access-methods.html"><span class="nav-link__icon">⌁</span><span>Access methods</span></a>
+<a class="nav-link" href="./notifications.html"><span class="nav-link__icon">◉</span><span>Notifications</span><span class="nav-link__badge">3</span></a>
+<a class="nav-link" href="./support.html"><span class="nav-link__icon">?</span><span>Support</span></a>
+<a class="nav-link" href="./emergency-assistance.html"><span class="nav-link__icon">!</span><span>Emergency assistance</span></a>
+<a class="nav-link" href="./account-security.html"><span class="nav-link__icon">⌾</span><span>Security & Privacy</span></a>
+<a class="nav-link" href="./settings.html"><span class="nav-link__icon">⚙</span><span>Settings</span></a><a class="nav-link" href="./demo-controls.html"><span class="nav-link__icon">◈</span><span>Demo controls</span></a>
+</nav>
+<div class="sidebar__footer"><div class="sidebar__user"><span class="sidebar__avatar" id="avatar">VD</span><span><strong id="sidebar-name">VoltDrive Driver</strong><span id="sidebar-email">driver@voltdrive.am</span></span></div><button class="nav-link" id="logout-button" type="button" style="width:100%;border:0;background:transparent;cursor:pointer"><span class="nav-link__icon">↪</span><span>Sign out</span></button></div>
+</aside>
+<div class="mobile-overlay" id="mobile-overlay"></div>
+<div class="app-main">
+<header class="app-header"><div class="header__left"><button class="header__menu" id="menu-toggle" type="button" aria-label="Open menu">☰</button><div class="header__title"><strong>Reserve charging</strong><span>Book a location, charger or parking bay</span></div></div><div class="header__right"><label class="header-control vehicle-select" aria-label="Active vehicle"><span class="vehicle-select__icon" aria-hidden="true">◇</span><select id="vehicle-selector" aria-label="Active vehicle"></select></label></div></header>
+<main class="page-content reservation-page">
+<a class="back-link" id="back-to-location" href="./location-details.html?id=yerevan-mall">← Back to location</a>
+<section class="reservation-heading"><div><span class="eyebrow">Reservation flow</span><h1>Plan your charging visit</h1><p>Choose what you want to reserve, set your arrival time and review the total before confirmation.</p></div><span class="step-count" id="step-count">Step 1 of 4</span></section>
+<div class="progress-track" aria-label="Reservation progress"><span class="is-active"></span><span></span><span></span><span></span></div>
+<div class="reservation-layout">
+<section class="reservation-card" id="reservation-card">
+<form id="reservation-form" novalidate>
+<div class="reservation-step is-active" data-step="1">
+<div class="step-header"><span class="step-number">01</span><div><h2>What would you like to reserve?</h2><p>Select the reservation type that fits your visit.</p></div></div>
+<div class="choice-grid" id="reservation-type-options">
+<label class="choice-card is-selected"><input type="radio" name="reservationType" value="location" checked><span class="choice-icon">⌖</span><strong>Any charger</strong><small>The system assigns the best available charger when you arrive.</small></label>
+<label class="choice-card"><input type="radio" name="reservationType" value="charger"><span class="choice-icon">ϟ</span><strong>Specific charger</strong><small>Choose one available charger and connector in advance.</small></label>
+<label class="choice-card"><input type="radio" name="reservationType" value="parking"><span class="choice-icon">P</span><strong>Parking bay</strong><small>Reserve a specific charging bay for your vehicle.</small></label>
+<label class="choice-card"><input type="radio" name="reservationType" value="vehicle"><span class="choice-icon">◇</span><strong>For this vehicle</strong><small>Reserve charging based on your vehicle compatibility and target.</small></label>
+</div>
+<div class="conditional-selects"><div class="field-group" id="charger-field" hidden><label for="charger-select">Available charger</label><select id="charger-select"></select></div><div class="field-group" id="bay-field" hidden><label for="bay-select">Parking bay</label><select id="bay-select"></select></div></div>
+</div>
+<div class="reservation-step" data-step="2">
+<div class="step-header"><span class="step-number">02</span><div><h2>When are you arriving?</h2><p>Choose your expected arrival and charging duration.</p></div></div>
+<div class="form-grid"><div class="field-group"><label for="arrival-date">Arrival date</label><input id="arrival-date" type="date" required></div><div class="field-group"><label for="arrival-time">Arrival time</label><input id="arrival-time" type="time" required></div><div class="field-group"><label for="duration">Expected duration</label><select id="duration"><option value="30">30 minutes</option><option value="45" selected>45 minutes</option><option value="60">1 hour</option><option value="90">1 hour 30 minutes</option><option value="120">2 hours</option></select></div><div class="field-group"><label for="target">Target battery</label><select id="target"><option value="70">70%</option><option value="80" selected>80%</option><option value="90">90%</option><option value="100">100%</option></select></div></div>
+<div class="vehicle-summary"><div><span>Selected vehicle</span><strong id="selected-vehicle">Tesla Model Y</strong><small id="vehicle-connector">CCS2 compatible</small></div><button class="text-button" type="button" data-coming-soon="Vehicle selector">Change</button></div>
+</div>
+<div class="reservation-step" data-step="3">
+<div class="step-header"><span class="step-number">03</span><div><h2>Review conditions</h2><p>Check the tariff, fees and reservation rules before continuing.</p></div></div>
+<div class="condition-list"><div><span>Energy tariff</span><strong id="review-energy">120 AMD/kWh</strong></div><div><span>Reservation fee</span><strong id="review-reservation-fee">500 AMD</strong></div><div><span>Idle fee</span><strong id="review-idle-fee">50 AMD/min</strong></div><div><span>Arrival grace period</span><strong>10 minutes</strong></div><div><span>Cancellation</span><strong>Free up to 30 min before arrival</strong></div></div>
+<label class="terms-check"><input id="terms-check" type="checkbox"><span>I accept the reservation, cancellation and idle-fee conditions.</span></label>
+</div>
+<div class="reservation-step" data-step="4">
+<div class="step-header"><span class="step-number">04</span><div><h2>Confirm reservation</h2><p>Make sure all details are correct before booking.</p></div></div>
+<div class="confirmation-grid"><div><span>Location</span><strong id="confirm-location">Yerevan Mall EV Station</strong></div><div><span>Reservation type</span><strong id="confirm-type">Any available charger</strong></div><div><span>Arrival</span><strong id="confirm-arrival">—</strong></div><div><span>Duration</span><strong id="confirm-duration">45 minutes</strong></div><div><span>Vehicle</span><strong id="confirm-vehicle">Tesla Model Y</strong></div><div><span>Target battery</span><strong id="confirm-target">80%</strong></div></div>
+</div>
+<div class="form-error" id="form-error" role="alert"></div>
+<div class="step-actions"><button class="button button--secondary" id="previous-button" type="button" hidden>Back</button><button class="button button--primary" id="next-button" type="button">Continue</button><button class="button button--primary" id="confirm-button" type="submit" hidden>Confirm reservation</button></div>
+</form>
+</section>
+<aside class="reservation-summary"><div class="reservation-summary__sticky"><span class="eyebrow">Reservation summary</span><h2 id="summary-location">Yerevan Mall EV Station</h2><p id="summary-address">34 Arshakunyats Avenue, Yerevan</p><div class="summary-divider"></div><div class="summary-row"><span>Reservation type</span><strong id="summary-type">Any charger</strong></div><div class="summary-row"><span>Arrival</span><strong id="summary-arrival">Select date and time</strong></div><div class="summary-row"><span>Target</span><strong id="summary-target">80%</strong></div><div class="summary-row"><span>Energy estimate</span><strong id="summary-energy">40 kWh</strong></div><div class="summary-divider"></div><div class="summary-row"><span>Estimated charging</span><strong id="summary-charging-cost">4,800 AMD</strong></div><div class="summary-row"><span>Reservation fee</span><strong id="summary-reservation-fee">500 AMD</strong></div><div class="summary-total"><span>Estimated total</span><strong id="summary-total">5,300 AMD</strong></div><small>Charging is billed from actual delivered energy. Final amount may change.</small></div></aside>
+</div>
+<section class="reservation-success" id="reservation-success" hidden><div class="success-icon">✓</div><span class="eyebrow">Reservation confirmed</span><h1>Your charging visit is booked.</h1><p id="success-description">Yerevan Mall EV Station is reserved for your selected arrival time.</p><div class="success-grid"><div><span>Reservation number</span><strong id="reservation-number">RSV-000000</strong></div><div><span>Arrival</span><strong id="success-arrival">—</strong></div><div><span>Vehicle</span><strong id="success-vehicle">Tesla Model Y</strong></div><div><span>Access code</span><strong id="access-code">000000</strong></div></div><div class="qr-code" aria-label="Reservation QR code"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div><div class="success-actions"><a class="button button--primary" href="./dashboard.html">Go to Dashboard</a><button class="button button--secondary" id="navigation-after-booking" type="button">Navigate</button><button class="button button--secondary" id="modify-reservation" type="button">Modify reservation</button></div></section>
+</main>
+</div></div>
+<div class="reservation-toast" id="reservation-toast" role="status"></div>
+<script type="module" src="./js/pages/reservation.js"></script>
+<script type="module" src="./js/components/vehicle-selector.js"></script>
+</body></html>

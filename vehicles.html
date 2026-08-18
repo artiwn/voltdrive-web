@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b0b0d"><meta name="mobile-web-app-capable" content="yes">
+<title>Vehicles — VoltDrive</title>
+<link rel="stylesheet" href="./css/core/reset.css"><link rel="stylesheet" href="./css/core/variables.css"><link rel="stylesheet" href="./css/core/typography.css"><link rel="stylesheet" href="./css/components/buttons.css"><link rel="stylesheet" href="./css/components/forms.css"><link rel="stylesheet" href="./css/components/dashboard-cards.css"><link rel="stylesheet" href="./css/layout/app-layout.css"><link rel="stylesheet" href="./css/layout/sidebar.css"><link rel="stylesheet" href="./css/layout/header.css"><link rel="stylesheet" href="./css/pages/vehicles.css">
+<link rel="stylesheet" href="./css/core/metallic-theme.css"></head>
+<body class="app-page">
+<div class="app-shell">
+<aside class="sidebar" id="sidebar">
+<a class="sidebar__brand" href="./dashboard.html"><span class="sidebar__mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 4.5 13h6L9 22l10.5-13h-6L13 2Z"/></svg></span><span>VoltDrive</span></a>
+<div class="sidebar__caption">Driver portal</div>
+<nav class="sidebar__nav" aria-label="Primary navigation">
+<a class="nav-link" href="./dashboard.html"><span class="nav-link__icon">⌂</span><span>Dashboard</span></a>
+<a class="nav-link" href="./map.html"><span class="nav-link__icon">⌖</span><span>Map & Stations</span></a><a class="nav-link" href="./route-planner.html"><span class="nav-link__icon">↝</span><span>Route planner</span></a>
+<a class="nav-link" href="./charging.html"><span class="nav-link__icon">ϟ</span><span>Charge</span></a><a class="nav-link" href="./smart-charging.html"><span class="nav-link__icon">◴</span><span>Smart charging</span></a>
+<a class="nav-link" href="./reservations.html"><span class="nav-link__icon">▣</span><span>Reservations</span><span class="nav-link__badge">1</span></a>
+<a class="nav-link" href="./activity.html"><span class="nav-link__icon">↻</span><span>Activity</span></a><a class="nav-link" href="./analytics.html"><span class="nav-link__icon">⌁</span><span>Analytics</span></a>
+<a class="nav-link is-active" href="./vehicles.html"><span class="nav-link__icon">◇</span><span>Vehicles</span></a>
+<a class="nav-link" href="./wallet.html"><span class="nav-link__icon">▤</span><span>Wallet & Payments</span></a>
+<a class="nav-link" href="./subscriptions.html"><span class="nav-link__icon">✦</span><span>Plans & Packages</span></a>
+<a class="nav-link" href="./access-methods.html"><span class="nav-link__icon">⌁</span><span>Access methods</span></a>
+<a class="nav-link" href="./notifications.html"><span class="nav-link__icon">◉</span><span>Notifications</span><span class="nav-link__badge">3</span></a>
+<a class="nav-link" href="./support.html"><span class="nav-link__icon">?</span><span>Support</span></a>
+<a class="nav-link" href="./emergency-assistance.html"><span class="nav-link__icon">!</span><span>Emergency assistance</span></a>
+<a class="nav-link" href="./account-security.html"><span class="nav-link__icon">⌾</span><span>Security & Privacy</span></a>
+<a class="nav-link" href="./settings.html"><span class="nav-link__icon">⚙</span><span>Settings</span></a><a class="nav-link" href="./demo-controls.html"><span class="nav-link__icon">◈</span><span>Demo controls</span></a>
+</nav>
+<div class="sidebar__footer"><div class="sidebar__user"><span class="sidebar__avatar" id="avatar">VD</span><span><strong id="sidebar-name">VoltDrive Driver</strong><span id="sidebar-email">driver@voltdrive.am</span></span></div><button class="nav-link" id="logout-button" type="button" style="width:100%;border:0;background:transparent;cursor:pointer"><span class="nav-link__icon">↪</span><span>Sign out</span></button></div>
+</aside>
+<div class="mobile-overlay" id="mobile-overlay"></div>
+<div class="app-main">
+<header class="app-header"><div class="header__left"><button class="header__menu" id="menu-toggle" type="button" aria-label="Open menu">☰</button><div class="header__title"><strong>Vehicles</strong><span>Garage, compatibility and charging preferences</span></div></div><div class="header__right"><label class="header-control vehicle-select" aria-label="Active vehicle"><span class="vehicle-select__icon" aria-hidden="true">◇</span><select id="vehicle-selector" aria-label="Active vehicle"></select></label><div class="header-control wallet-chip"><span>Wallet</span><strong>14,500 AMD</strong></div><a class="header-control header-icon" href="./notifications.html" aria-label="Notifications">◉<span class="header-icon__dot"></span></a></div></header>
+<main class="page-content">
+<section class="vehicles-heading"><div><span class="eyebrow">Vehicle garage</span><h1>Your vehicles</h1><p>Manage connector compatibility, battery information and charging preferences.</p></div><button class="button button--primary" id="add-vehicle-button" type="button">+ Add vehicle</button></section>
+<section class="garage-summary" aria-label="Garage summary">
+<div class="summary-card"><span>Total vehicles</span><strong id="vehicle-count">1</strong><small>Personal and fleet vehicles</small></div>
+<div class="summary-card"><span>Active vehicle</span><strong id="active-vehicle-summary">Tesla Model Y</strong><small>Used for charging and reservations</small></div>
+<div class="summary-card"><span>Average battery</span><strong id="average-battery">68%</strong><small>Latest available status</small></div>
+<div class="summary-card"><span>Plug & Charge</span><strong id="plug-charge-count">1 enabled</strong><small>Automatic charger identification</small></div>
+</section>
+<section class="garage-toolbar"><label class="garage-search"><span>⌕</span><input id="vehicle-search" type="search" placeholder="Search manufacturer, model or plate"></label><select id="ownership-filter" aria-label="Filter ownership"><option value="all">All ownership</option><option value="personal">Personal</option><option value="corporate">Corporate</option></select></section>
+<section class="vehicle-grid" id="vehicle-grid" aria-live="polite"></section>
+<section class="garage-empty" id="garage-empty" hidden><span>◇</span><h2>No matching vehicles</h2><p>Try changing the search or ownership filter.</p></section>
+</main>
+</div>
+</div>
+<div class="vehicle-modal" id="vehicle-modal" aria-hidden="true"><button class="vehicle-modal__backdrop" id="vehicle-modal-backdrop" type="button" aria-label="Close vehicle form"></button><section class="vehicle-modal__panel" role="dialog" aria-modal="true" aria-labelledby="vehicle-modal-title"><header><div><span class="eyebrow">Vehicle profile</span><h2 id="vehicle-modal-title">Add vehicle</h2></div><button class="vehicle-modal__close" id="vehicle-modal-close" type="button" aria-label="Close">×</button></header><form id="garage-vehicle-form"><input type="hidden" name="vehicleId"><div class="vehicle-form-grid"><label class="field"><span>Manufacturer</span><input name="manufacturer" required placeholder="Tesla"></label><label class="field"><span>Model</span><input name="model" required placeholder="Model Y"></label><label class="field"><span>Registration number</span><input name="registration" required placeholder="35 EV 777"></label><label class="field"><span>Battery capacity</span><div class="input-suffix"><input name="batteryCapacity" type="number" min="10" max="250" required value="75"><span>kWh</span></div></label><label class="field"><span>Current battery</span><div class="input-suffix"><input name="batteryLevel" type="number" min="0" max="100" required value="68"><span>%</span></div></label><label class="field"><span>Preferred charging limit</span><div class="input-suffix"><input name="chargingLimit" type="number" min="50" max="100" step="5" required value="80"><span>%</span></div></label><label class="field"><span>Primary connector</span><select name="connector"><option>CCS2</option><option>CHAdeMO</option><option>Type 2</option><option>NACS</option></select></label><label class="field"><span>Ownership</span><select name="ownership"><option value="personal">Personal</option><option value="corporate">Corporate</option></select></label></div><div class="vehicle-switches"><label><span><strong>Plug & Charge</strong><small>Identify automatically at compatible chargers</small></span><input name="plugAndCharge" type="checkbox" checked></label><label><span><strong>Home charging configured</strong><small>Show home charging status and preferences</small></span><input name="homeCharging" type="checkbox"></label></div><footer><button class="button button--secondary" id="cancel-vehicle-button" type="button">Cancel</button><button class="button button--primary" type="submit">Save vehicle</button></footer></form></section></div>
+<div class="vehicle-toast" id="vehicle-toast" role="status"></div>
+<script type="module" src="./js/pages/vehicles.js"></script>
+<script type="module" src="./js/components/vehicle-selector.js"></script>
+</body></html>

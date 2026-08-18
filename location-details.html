@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b0b0d"><meta name="mobile-web-app-capable" content="yes">
+<title>Location details — VoltDrive</title>
+<link rel="stylesheet" href="./css/core/reset.css"><link rel="stylesheet" href="./css/core/variables.css"><link rel="stylesheet" href="./css/core/typography.css"><link rel="stylesheet" href="./css/components/buttons.css"><link rel="stylesheet" href="./css/components/dashboard-cards.css"><link rel="stylesheet" href="./css/layout/app-layout.css"><link rel="stylesheet" href="./css/layout/sidebar.css"><link rel="stylesheet" href="./css/layout/header.css"><link rel="stylesheet" href="./css/pages/location-details.css">
+<link rel="stylesheet" href="./css/core/metallic-theme.css"></head>
+<body class="app-page">
+<div class="app-shell">
+<aside class="sidebar" id="sidebar">
+<a class="sidebar__brand" href="./dashboard.html"><span class="sidebar__mark">ϟ</span><span>VoltDrive</span></a>
+<div class="sidebar__caption">Driver portal</div>
+<nav class="sidebar__nav" aria-label="Primary navigation">
+<a class="nav-link" href="./dashboard.html"><span class="nav-link__icon">⌂</span><span>Dashboard</span></a>
+<a class="nav-link is-active" href="./map.html"><span class="nav-link__icon">⌖</span><span>Map & Stations</span></a><a class="nav-link" href="./route-planner.html"><span class="nav-link__icon">↝</span><span>Route planner</span></a>
+<a class="nav-link" href="./charging.html"><span class="nav-link__icon">ϟ</span><span>Charge</span></a><a class="nav-link" href="./smart-charging.html"><span class="nav-link__icon">◴</span><span>Smart charging</span></a>
+<a class="nav-link" href="./reservations.html"><span class="nav-link__icon">▣</span><span>Reservations</span><span class="nav-link__badge">1</span></a>
+<a class="nav-link" href="./activity.html"><span class="nav-link__icon">↻</span><span>Activity</span></a><a class="nav-link" href="./analytics.html"><span class="nav-link__icon">⌁</span><span>Analytics</span></a>
+<a class="nav-link" href="./vehicles.html"><span class="nav-link__icon">◇</span><span>Vehicles</span></a>
+<a class="nav-link" href="./wallet.html"><span class="nav-link__icon">▤</span><span>Wallet & Payments</span></a>
+<a class="nav-link" href="./subscriptions.html"><span class="nav-link__icon">✦</span><span>Plans & Packages</span></a>
+<a class="nav-link" href="./access-methods.html"><span class="nav-link__icon">⌁</span><span>Access methods</span></a>
+<a class="nav-link" href="./notifications.html"><span class="nav-link__icon">◉</span><span>Notifications</span><span class="nav-link__badge">3</span></a>
+<a class="nav-link" href="./support.html"><span class="nav-link__icon">?</span><span>Support</span></a>
+<a class="nav-link" href="./emergency-assistance.html"><span class="nav-link__icon">!</span><span>Emergency assistance</span></a>
+<a class="nav-link" href="./account-security.html"><span class="nav-link__icon">⌾</span><span>Security & Privacy</span></a>
+<a class="nav-link" href="./settings.html"><span class="nav-link__icon">⚙</span><span>Settings</span></a><a class="nav-link" href="./demo-controls.html"><span class="nav-link__icon">◈</span><span>Demo controls</span></a>
+</nav>
+<div class="sidebar__footer"><div class="sidebar__user"><span class="sidebar__avatar" id="avatar">VD</span><span><strong id="sidebar-name">VoltDrive Driver</strong><span id="sidebar-email">driver@voltdrive.am</span></span></div><button class="nav-link" id="logout-button" type="button" style="width:100%;border:0;background:transparent;cursor:pointer"><span class="nav-link__icon">↪</span><span>Sign out</span></button></div>
+</aside>
+<div class="mobile-overlay" id="mobile-overlay"></div>
+<div class="app-main">
+<header class="app-header"><div class="header__left"><button class="header__menu" id="menu-toggle" type="button" aria-label="Open menu">☰</button><div class="header__title"><strong>Location details</strong><span>Choose a charger and plan your visit</span></div></div><div class="header__right"><label class="header-control vehicle-select" aria-label="Active vehicle"><span class="vehicle-select__icon" aria-hidden="true">◇</span><select id="vehicle-selector" aria-label="Active vehicle"></select></label><a class="header-control header-icon" href="./notifications.html" aria-label="Notifications">◉<span class="header-icon__dot"></span></a></div></header>
+<main class="page-content location-page">
+<a class="back-link" href="./map.html">← Back to Map & Stations</a>
+<section class="location-hero">
+<div class="location-hero__visual" aria-hidden="true"><span class="location-hero__bolt">ϟ</span><div class="location-hero__glow"></div></div>
+<div class="location-hero__content">
+<div class="location-hero__top"><span class="location-status" id="location-status">Available</span><button class="icon-button" id="favorite-button" type="button" aria-label="Add to favorites">♡</button></div>
+<h1 id="location-name">Yerevan Mall EV Station</h1>
+<p id="location-address">34 Arshakunyats Avenue, Yerevan</p>
+<div class="location-meta"><span id="location-distance">1.4 km away</span><span>•</span><span id="location-eta">5 min drive</span><span>•</span><span>Open 24/7</span></div>
+<div class="hero-actions"><button class="button button--primary" id="reserve-button" type="button">Reserve location</button><button class="button button--secondary" id="navigate-button" type="button">Navigate</button><button class="button button--secondary" id="start-button" type="button">Start charging</button></div>
+</div>
+</section>
+<section class="summary-grid">
+<article class="summary-card"><span>Availability</span><strong id="summary-availability">4 of 6</strong><small>Chargers available now</small></article>
+<article class="summary-card"><span>Maximum power</span><strong id="summary-power">150 kW</strong><small>Fast DC charging</small></article>
+<article class="summary-card"><span>Energy price</span><strong id="summary-price">120 AMD</strong><small>Per kWh</small></article>
+<article class="summary-card"><span>Reliability</span><strong id="summary-reliability">98%</strong><small>Last 30 days</small></article>
+</section>
+<div class="location-content-grid">
+<div class="location-main-column">
+<section class="details-section"><div class="section-heading"><div><span class="eyebrow">Charging hardware</span><h2>Chargers & connectors</h2></div><span class="section-note">Live availability</span></div><div class="charger-list" id="charger-list"></div></section>
+<section class="details-section"><div class="section-heading"><div><span class="eyebrow">Parking</span><h2>Charging bays</h2></div><span class="section-note" id="bay-summary">8 total bays</span></div><div class="parking-grid" id="parking-grid"></div></section>
+<section class="details-section"><div class="section-heading"><div><span class="eyebrow">On site</span><h2>Facilities & access</h2></div></div><div class="facility-grid" id="facility-grid"></div><div class="access-note"><strong>Access instructions</strong><p id="access-instructions">Enter from Arshakunyats Avenue and follow EV charging signs to parking level P1.</p></div></section>
+</div>
+<aside class="booking-panel">
+<div class="booking-panel__sticky">
+<span class="eyebrow">Price overview</span><h2>Plan your charging</h2>
+<div class="price-list"><div><span>Energy</span><strong id="price-energy">120 AMD/kWh</strong></div><div><span>Reservation fee</span><strong id="price-reservation">500 AMD</strong></div><div><span>Idle fee</span><strong id="price-idle">50 AMD/min</strong></div><div><span>Grace period</span><strong>10 minutes</strong></div></div>
+<div class="estimate-card"><span>Estimated session</span><strong id="estimated-cost">4,800 AMD</strong><small>40 kWh · approximately 32 minutes</small></div>
+<label class="panel-label" for="charger-select">Preferred charger</label><select id="charger-select" class="panel-select"></select>
+<button class="button button--primary button--block" id="panel-reserve-button" type="button">Reserve this location</button><button class="button button--secondary button--block" id="waiting-list-button" type="button">Join waiting list</button><a class="button button--secondary button--block" id="feedback-button" href="./station-feedback.html">Reviews & report issue</a>
+<p class="booking-disclaimer">Final price depends on delivered energy, time and applicable fees.</p>
+</div>
+</aside>
+</div>
+</main>
+</div></div>
+<div class="location-toast" id="location-toast" role="status"></div>
+<script type="module" src="./js/pages/location-details.js"></script>
+<script type="module" src="./js/components/vehicle-selector.js"></script>
+</body></html>

@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b0b0d"><meta name="mobile-web-app-capable" content="yes">
+<title>Notification details — VoltDrive</title>
+<link rel="stylesheet" href="./css/core/reset.css"><link rel="stylesheet" href="./css/core/variables.css"><link rel="stylesheet" href="./css/core/typography.css"><link rel="stylesheet" href="./css/components/buttons.css"><link rel="stylesheet" href="./css/components/forms.css"><link rel="stylesheet" href="./css/components/dashboard-cards.css"><link rel="stylesheet" href="./css/layout/app-layout.css"><link rel="stylesheet" href="./css/layout/sidebar.css"><link rel="stylesheet" href="./css/layout/header.css"><link rel="stylesheet" href="./css/pages/notification-details.css">
+<link rel="stylesheet" href="./css/core/metallic-theme.css"></head>
+<body class="app-page">
+<div class="app-shell">
+<aside class="sidebar" id="sidebar">
+<a class="sidebar__brand" href="./dashboard.html"><span class="sidebar__mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 4.5 13h6L9 22l10.5-13h-6L13 2Z"/></svg></span><span>VoltDrive</span></a>
+<div class="sidebar__caption">Driver portal</div>
+<nav class="sidebar__nav" aria-label="Primary navigation">
+<a class="nav-link" href="./dashboard.html"><span class="nav-link__icon">⌂</span><span>Dashboard</span></a>
+<a class="nav-link" href="./map.html"><span class="nav-link__icon">⌖</span><span>Map & Stations</span></a><a class="nav-link" href="./route-planner.html"><span class="nav-link__icon">↝</span><span>Route planner</span></a>
+<a class="nav-link" href="./charging.html"><span class="nav-link__icon">ϟ</span><span>Charge</span></a><a class="nav-link" href="./smart-charging.html"><span class="nav-link__icon">◴</span><span>Smart charging</span></a>
+<a class="nav-link" href="./reservations.html"><span class="nav-link__icon">▣</span><span>Reservations</span><span class="nav-link__badge">1</span></a>
+<a class="nav-link" href="./activity.html"><span class="nav-link__icon">↻</span><span>Activity</span></a><a class="nav-link" href="./analytics.html"><span class="nav-link__icon">⌁</span><span>Analytics</span></a>
+<a class="nav-link" href="./vehicles.html"><span class="nav-link__icon">◇</span><span>Vehicles</span></a>
+<a class="nav-link" href="./wallet.html"><span class="nav-link__icon">▤</span><span>Wallet & Payments</span></a>
+<a class="nav-link" href="./subscriptions.html"><span class="nav-link__icon">✦</span><span>Plans & Packages</span></a>
+<a class="nav-link is-active" href="./notifications.html"><span class="nav-link__icon">◉</span><span>Notifications</span><span class="nav-link__badge" id="sidebar-notification-count">0</span></a>
+<a class="nav-link" href="./support.html"><span class="nav-link__icon">?</span><span>Support</span></a>
+<a class="nav-link" href="./emergency-assistance.html"><span class="nav-link__icon">!</span><span>Emergency assistance</span></a>
+<a class="nav-link" href="./account-security.html"><span class="nav-link__icon">⌾</span><span>Security & Privacy</span></a>
+<a class="nav-link" href="./settings.html"><span class="nav-link__icon">⚙</span><span>Settings</span></a><a class="nav-link" href="./demo-controls.html"><span class="nav-link__icon">◈</span><span>Demo controls</span></a>
+</nav>
+<div class="sidebar__footer"><div class="sidebar__user"><span class="sidebar__avatar" id="avatar">VD</span><span><strong id="sidebar-name">VoltDrive Driver</strong><span id="sidebar-email">driver@voltdrive.am</span></span></div><button class="nav-link" id="logout-button" type="button" style="width:100%;border:0;background:transparent;cursor:pointer"><span class="nav-link__icon">↪</span><span>Sign out</span></button></div>
+</aside>
+<div class="mobile-overlay" id="mobile-overlay"></div>
+<div class="app-main">
+<header class="app-header"><div class="header__left"><button class="header__menu" id="menu-toggle" type="button" aria-label="Open menu">☰</button><div class="header__title"><strong>Notification details</strong><span>Review the update and take the next action</span></div></div><div class="header__right"><label class="header-control vehicle-select" aria-label="Active vehicle"><span class="vehicle-select__icon" aria-hidden="true">◇</span><select id="vehicle-selector" aria-label="Active vehicle"></select></label><div class="header-control wallet-chip"><span>Wallet</span><strong id="header-wallet-balance">14,500 AMD</strong></div><a class="header-control header-icon" href="./notifications.html" aria-label="Notifications">◉<span class="header-icon__dot" id="header-notification-dot"></span></a></div></header>
+<main class="page-content notification-details-page">
+<a class="back-link" href="./notifications.html">← Back to notifications</a>
+<section class="details-hero" id="details-hero">
+<div class="details-icon" id="details-icon">◉</div>
+<div class="details-hero__copy"><div class="details-badges"><span class="details-type" id="details-type">Notification</span><span class="details-priority" id="details-priority" hidden>Critical</span><span class="details-status" id="details-status">Unread</span></div><h1 id="details-title">Notification</h1><p id="details-message">Loading notification details…</p><div class="details-time"><span id="details-time">—</span><span id="details-id">—</span></div></div>
+</section>
+<section class="details-layout">
+<div class="details-main">
+<article class="details-card"><div class="card-heading"><div><span class="eyebrow">Context</span><h2>What happened</h2></div></div><div class="context-grid" id="context-grid"></div></article>
+<article class="details-card"><div class="card-heading"><div><span class="eyebrow">Recommended next step</span><h2 id="recommendation-title">Take action</h2></div></div><p class="recommendation-copy" id="recommendation-copy"></p><div class="smart-actions" id="smart-actions"></div></article>
+<article class="details-card timeline-card"><div class="card-heading"><div><span class="eyebrow">Update timeline</span><h2>Related events</h2></div></div><div class="details-timeline" id="details-timeline"></div></article>
+</div>
+<aside class="details-sidebar">
+<article class="details-card compact-card"><h2>Notification controls</h2><button class="button button--secondary button--block" id="toggle-read" type="button">Mark as read</button><button class="button button--secondary button--block" id="snooze-notification" type="button">Snooze for 15 minutes</button><button class="button button--secondary button--block danger-outline" id="delete-notification" type="button">Delete notification</button></article>
+<article class="details-card compact-card"><h2>Need help?</h2><p>Support can review the related charger, reservation, session or payment.</p><a class="button button--secondary button--block" id="support-link" href="./support.html">Contact support</a></article>
+</aside>
+</section>
+</main>
+</div>
+</div>
+<div class="notification-toast" id="notification-toast" role="status"></div>
+<script type="module" src="./js/pages/notification-details.js"></script>
+<script type="module" src="./js/components/vehicle-selector.js"></script>
+</body>
+</html>
